@@ -10,30 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PrivateCustomer.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PrivateCustomer : Window
     {
-        public MainWindow()
+        public PrivateCustomer()
         {
             InitializeComponent();
-        }
-
-        private void Private_Click(object sender, RoutedEventArgs e)
-        {
-           var newWindow = new PrivateCustomer();
-           newWindow.Show();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
         }
     }
 }

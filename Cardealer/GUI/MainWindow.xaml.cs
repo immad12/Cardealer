@@ -25,15 +25,61 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void Private_Click(object sender, RoutedEventArgs e)
+        #region Eventhandlers for Private Customers
+        private void PrivateFindCustomer_Click(object sender, RoutedEventArgs e)
         {
-           var newWindow = new PrivateCustomer();
-           newWindow.Show();
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PrivateAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-           
+
+        }
+
+        private void PrivateEditCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Eventhandlers for Business Customers
+        private void BusinessFindCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BusinessAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BusinessEditCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region Eventhandlers for Cars
+        private void FindCar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddCar_Click(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new AddCarWindow();
+            newWindow.Show();
+        }
+
+        private void EditCar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

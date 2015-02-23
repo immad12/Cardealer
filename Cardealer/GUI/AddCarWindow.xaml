@@ -1,0 +1,22 @@
+﻿<Window x:Class="GUI.AddCarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add New Car" Height="452.508" Width="465.597">
+    <Grid Background="#FF8194D3">
+        <Label Content="Model:" HorizontalAlignment="Left" Height="33" Margin="31,25,0,0" VerticalAlignment="Top" Width="156" FontSize="16"/>
+        <TextBox x:Name="CarModel" HorizontalAlignment="Left" Height="30" Margin="151,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265"/>
+        <Label Content="Color:" HorizontalAlignment="Left" Height="30" Margin="31,80,0,0" VerticalAlignment="Top" Width="165" FontSize="16"/>
+        <TextBox x:Name="CarColor" HorizontalAlignment="Left" Height="30" Margin="151,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265"/>
+        <Label Content="Sales Price:" HorizontalAlignment="Left" Height="61" Margin="31,137,0,0" VerticalAlignment="Top" Width="114" FontSize="16"/>
+        <TextBox x:Name="CarSalePrice" HorizontalAlignment="Left" Height="31" Margin="151,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265"/>
+        <Label Content="Rent Price:" HorizontalAlignment="Left" Height="32" Margin="31,198,0,0" VerticalAlignment="Top" Width="114" FontSize="16"/>
+        <TextBox x:Name="CarRentPrice" HorizontalAlignment="Left" Height="30" Margin="151,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265"/>
+        <RadioButton x:Name="CommisionState" Content="Commision" HorizontalAlignment="Left" Height="25" Margin="59,282,0,0" VerticalAlignment="Top" Width="86" IsChecked="True"/>
+        <RadioButton x:Name="SoldState" Content="Sold" HorizontalAlignment="Left" Height="25" Margin="179,282,0,0" VerticalAlignment="Top" Width="111"/>
+        <RadioButton x:Name="LeasedState" Content="Leased" HorizontalAlignment="Left" Height="25" Margin="295,282,0,0" VerticalAlignment="Top" Width="134"/>
+        <Button x:Name="ClearCarButton" Content="Clear" HorizontalAlignment="Left" Height="40" Margin="31,350,0,0" VerticalAlignment="Top" Width="165" Click="ClearCarButton_Click"/>
+        <Button x:Name="SaveCarButton" Content="Save" HorizontalAlignment="Left" Height="40" Margin="251,350,0,0" VerticalAlignment="Top" Width="165" Click="SaveCarButton_Click"/>
+        <GroupBox x:Name="CarStatusGroupBox" Header="Car Status:" HorizontalAlignment="Left" Height="71" Margin="31,249,0,0" VerticalAlignment="Top" Width="385" FontSize="16"/>
+
+    </Grid>
+</Window>

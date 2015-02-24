@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain.csproj", "{1AD6D099-AE97-478E-AB43-23ED7C625C79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "..\GUI\GUI.csproj", "{7DBAAB35-C14A-4CD3-B5B4-1E0E1EC2BC23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AD6D099-AE97-478E-AB43-23ED7C625C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AD6D099-AE97-478E-AB43-23ED7C625C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AD6D099-AE97-478E-AB43-23ED7C625C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AD6D099-AE97-478E-AB43-23ED7C625C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DBAAB35-C14A-4CD3-B5B4-1E0E1EC2BC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DBAAB35-C14A-4CD3-B5B4-1E0E1EC2BC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DBAAB35-C14A-4CD3-B5B4-1E0E1EC2BC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DBAAB35-C14A-4CD3-B5B4-1E0E1EC2BC23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

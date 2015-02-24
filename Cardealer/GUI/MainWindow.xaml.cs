@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Domain;
+using Domain.Vehicle;
 
 namespace GUI
 {
@@ -24,7 +25,9 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
-            //CarDataGrid.ItemsSource = List of cars
+
+            CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
+            TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
         }
 
         #region Eventhandlers for Private Customers
@@ -62,21 +65,54 @@ namespace GUI
         #endregion
 
         #region Eventhandlers for Cars
-        private void FindCar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void AddCar_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = new AddCarWindow();
             newWindow.Show();
         }
 
-        private void EditCar_Click(object sender, RoutedEventArgs e)
+          private void UpdateCarButton_Click(object sender, RoutedEventArgs e)
         {
-
+            CarDataGrid.Items.Refresh();
+            TruckDataGrid.Items.Refresh();
         }
         #endregion
+
+        
+        private void CarDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var newWindow = new AddCarWindow();
+            newWindow.Show();
+            newWindow.SaveCarButton.Content = "OK";
+            newWindow.CarModel.IsReadOnly = true;
+            newWindow.CarColor.IsReadOnly = true;
+            newWindow.CarSalePrice.IsReadOnly = true;
+            newWindow.CarRentPrice.IsReadOnly = true;
+
+            newWindow.CarRadioButton.IsChecked = true;
+            var row_data = (Vehicle)CarDataGrid.SelectedItem;
+            newWindow.CarModel.Text = row_data.Model;
+            newWindow.CarColor.Text = row_data.Color;
+            newWindow.CarSalePrice.Text = row_data.SalesPrice + "";
+            newWindow.CarRentPrice.Text = row_data.RentPrice + "";
+        }
+
+        private void TruckDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var newWindow = new AddCarWindow();
+            newWindow.Show();
+            newWindow.SaveCarButton.Content = "OK";
+            newWindow.CarModel.IsReadOnly = true;
+            newWindow.CarColor.IsReadOnly = true;
+            newWindow.CarSalePrice.IsReadOnly = true;
+            newWindow.CarRentPrice.IsReadOnly = true;
+
+            newWindow.TruckRadioButton.IsChecked = true;
+            var row_data = (Vehicle)TruckDataGrid.SelectedItem;
+            newWindow.CarModel.Text = row_data.Model;
+            newWindow.CarColor.Text = row_data.Color;
+            newWindow.CarSalePrice.Text = row_data.SalesPrice + "";
+            newWindow.CarRentPrice.Text = row_data.RentPrice + "";
+        }
     }
 }

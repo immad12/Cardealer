@@ -74,7 +74,7 @@
                         <DataGrid x:Name="BusinessDataGrid" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="394" Margin="0,50,0,0" VerticalAlignment="Top" Width="489"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Cars" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="57" Margin="-5,0,0,0">
+                <TabItem Header="Vehicles" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="57" Margin="-5,0,0,0">
                     <TabItem.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -89,10 +89,12 @@
                             <ColumnDefinition Width="311*"/>
                             <ColumnDefinition Width="0*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="FindCar_Copy" Content="Find Car" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="95" Click="FindCar_Click"/>
-                        <Button x:Name="AddCar_Copy" Grid.ColumnSpan="2" Content="Add Car" HorizontalAlignment="Left" Height="30" Margin="116,0,0,0" VerticalAlignment="Top" Width="95" Click="AddCar_Click"/>
-                        <Button x:Name="EditCar_Copy" Content="Edit Car" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="29,0,0,0" VerticalAlignment="Top" Width="95" Click="EditCar_Click"/>
-                        <DataGrid x:Name="CarDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="396" Margin="7,48,0,0" VerticalAlignment="Top" Width="494"/>
+                        <Button x:Name="AddCar_Copy" Content="Add Vehicle" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="105" Click="AddCar_Click"/>
+                        <DataGrid x:Name="CarDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="170" Margin="10,66,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="95" CanUserResizeColumns="False" CanUserResizeRows="False" MouseDoubleClick="CarDataGrid_MouseDoubleClick" CanUserReorderColumns="False" IsReadOnly="True"/>
+                        <DataGrid x:Name="TruckDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="170" Margin="10,281,0,0" VerticalAlignment="Top" Width="487"  MinColumnWidth="95" CanUserResizeRows="False" MouseDoubleClick="TruckDataGrid_MouseDoubleClick" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False"/>
+                        <Label Content="Cars:" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" FontSize="16" Width="86"/>
+                        <Label Content="Trucks:" HorizontalAlignment="Left" Height="30" Margin="10,246,0,0" VerticalAlignment="Top" Width="85" FontSize="16"/>
+                        <Button x:Name="UpdateCarButton" Content="Update Vehicles" HorizontalAlignment="Left" Height="30" Margin="134,0,0,0" VerticalAlignment="Top" Width="105" Click="UpdateCarButton_Click" Grid.ColumnSpan="2"/>
                     </Grid>
                 </TabItem>
             </TabControl>

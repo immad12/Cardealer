@@ -13,8 +13,8 @@
         <TextBox x:Name="CarRentPrice" HorizontalAlignment="Left" Height="30" Margin="151,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265"/>
         <Button x:Name="ClearCarButton" Content="Clear" HorizontalAlignment="Left" Height="40" Margin="31,275,0,0" VerticalAlignment="Top" Width="165" Click="ClearCarButton_Click"/>
         <Button x:Name="SaveCarButton" Content="Save" HorizontalAlignment="Left" Height="40" Margin="255,275,0,0" VerticalAlignment="Top" Width="165" Click="SaveCarButton_Click"/>
-        <RadioButton x:Name="CarRadioButton" Content="Car" HorizontalAlignment="Left" Margin="123,28,0,0" VerticalAlignment="Top" FontSize="16" Checked="CarRadioButton_Checked"/>
-        <RadioButton x:Name="TruckRadioButton" Content="Truck" HorizontalAlignment="Left" Height="35" Margin="255,28,0,0" VerticalAlignment="Top" Width="193" FontSize="16" Checked="TruckRadioButton_Checked"/>
+        <RadioButton x:Name="CarRadioButton" Content="Car" HorizontalAlignment="Left" Margin="123,28,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <RadioButton x:Name="TruckRadioButton" Content="Truck" HorizontalAlignment="Left" Height="35" Margin="255,28,0,0" VerticalAlignment="Top" Width="193" FontSize="16"/>
 
     </Grid>
 </Window>

@@ -28,31 +28,30 @@ namespace GUI
         #region Eventhandler Buttons
         private void ClearCarButton_Click(object sender, RoutedEventArgs e)
         {
+            CarRadioButton.IsChecked = false;
+            TruckRadioButton.IsChecked = false;
             CarModel.Clear();
             CarColor.Clear();
             CarSalePrice.Clear();
-            CarRentPrice.Clear();           
+            CarRentPrice.Clear();
         }
 
         private void SaveCarButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO SAVE A CAR
-            //Cardealer.Instance.RegisterCar();
+            String type = (CarRadioButton.IsChecked == true) ? "car" : "truck";
+            String model = CarModel.Text;
+            String carColor = CarColor.Text;
+            double salesPrice = Double.Parse(CarSalePrice.Text);
+            double rentPrice = Double.Parse(CarRentPrice.Text);
 
-            string type = (c)
-
-            this.Close();
+            if (SaveCarButton.Content.ToString() == "Save" && CarModel.SelectedText != null && CarColor.SelectedText != null && salesPrice > 0 && rentPrice > 0)
+            {
+                Cardealer.Instance.RegisterCar(type, model, carColor, salesPrice, rentPrice);
+                this.Close();
+            }
+            if (SaveCarButton.Content.ToString() == "OK")
+                this.Close();
         }
         #endregion
-
-        private void CarRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TruckRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

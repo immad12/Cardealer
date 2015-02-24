@@ -17,6 +17,7 @@ namespace GUI
 {
     /// <summary>
     /// Interaction logic for AddCarWindow.xaml
+    /// Logic to create a new car or truck. The window is also used for viewing data about vehicles from datagrid
     /// </summary>
     public partial class AddCarWindow : Window
     {
@@ -26,6 +27,7 @@ namespace GUI
         }
 
         #region Eventhandler Buttons
+        //Clear all fields for the window
         private void ClearCarButton_Click(object sender, RoutedEventArgs e)
         {
             CarRadioButton.IsChecked = false;
@@ -36,6 +38,7 @@ namespace GUI
             CarRentPrice.Clear();
         }
 
+        //Create a new vehicle
         private void SaveCarButton_Click(object sender, RoutedEventArgs e)
         {
             String type = (CarRadioButton.IsChecked == true) ? "car" : "truck";

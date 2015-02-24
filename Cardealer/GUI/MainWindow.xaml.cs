@@ -65,30 +65,33 @@ namespace GUI
         #endregion
 
         #region Eventhandlers for Cars
+        //Event for adding a new vehicle to the cardealer
         private void AddCar_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = new AddCarWindow();
             newWindow.Show();
         }
 
-          private void UpdateCarButton_Click(object sender, RoutedEventArgs e)
+        //Update the datagrids for car and truck
+        private void UpdateCarButton_Click(object sender, RoutedEventArgs e)
         {
             CarDataGrid.Items.Refresh();
             TruckDataGrid.Items.Refresh();
         }
-        #endregion
 
-        
+        //View data about vehicle when double clicking on a row
         private void CarDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var newWindow = new AddCarWindow();
             newWindow.Show();
             newWindow.SaveCarButton.Content = "OK";
+            //Change textboxes to not be editable
             newWindow.CarModel.IsReadOnly = true;
             newWindow.CarColor.IsReadOnly = true;
             newWindow.CarSalePrice.IsReadOnly = true;
             newWindow.CarRentPrice.IsReadOnly = true;
 
+            //Get the information from the row
             newWindow.CarRadioButton.IsChecked = true;
             var row_data = (Vehicle)CarDataGrid.SelectedItem;
             newWindow.CarModel.Text = row_data.Model;
@@ -114,5 +117,6 @@ namespace GUI
             newWindow.CarSalePrice.Text = row_data.SalesPrice + "";
             newWindow.CarRentPrice.Text = row_data.RentPrice + "";
         }
+        #endregion
     }
 }

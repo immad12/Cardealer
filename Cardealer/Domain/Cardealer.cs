@@ -6,6 +6,9 @@ using Domain.Vehicle;
 
 namespace Domain
 {
+    /// <summary>
+    /// Controller logic for the cardealer
+    /// </summary>
     public class Cardealer
     {
         #region Singleton pattern

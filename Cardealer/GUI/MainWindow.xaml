@@ -49,6 +49,7 @@
                         <Button x:Name="PrivateFindCustomer" Content="Find Customer" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Click="PrivateFindCustomer_Click"/>
                         <Button x:Name="PrivateAddCustomer" Content="Add New Customer" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Click="PrivateAddCustomer_Click"/>
                         <Button x:Name="PrivateEditCustomer" Content="Edit Customer" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="150,0,0,0" VerticalAlignment="Top" Width="120" Click="PrivateEditCustomer_Click"/>
+                        <DataGrid x:Name="PrivateDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="395" Margin="10,49,0,0" VerticalAlignment="Top" Width="491"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Business Customers" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="122" Margin="-2,0,0,0">
@@ -70,6 +71,7 @@
                         <Button x:Name="BusinessFindCustomer" Content="Find Customer" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="120" Click="BusinessFindCustomer_Click" Grid.ColumnSpan="3"/>
                         <Button x:Name="BusinessAddCustomer" Content="Add New Customer" Grid.Column="3" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="120" Click="BusinessAddCustomer_Click"/>
                         <Button x:Name="BusinessEditCustomer1" Content="Edit Customer" Grid.Column="3" HorizontalAlignment="Left" Height="30" Margin="140,0,0,0" VerticalAlignment="Top" Width="120" Click="BusinessEditCustomer_Click"/>
+                        <DataGrid x:Name="BusinessDataGrid" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="394" Margin="0,50,0,0" VerticalAlignment="Top" Width="489"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Cars" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="57" Margin="-5,0,0,0">
@@ -90,16 +92,7 @@
                         <Button x:Name="FindCar_Copy" Content="Find Car" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="95" Click="FindCar_Click"/>
                         <Button x:Name="AddCar_Copy" Grid.ColumnSpan="2" Content="Add Car" HorizontalAlignment="Left" Height="30" Margin="116,0,0,0" VerticalAlignment="Top" Width="95" Click="AddCar_Click"/>
                         <Button x:Name="EditCar_Copy" Content="Edit Car" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="29,0,0,0" VerticalAlignment="Top" Width="95" Click="EditCar_Click"/>
-                        <DataGrid Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="406" Margin="10,35,0,0" VerticalAlignment="Top" Width="487" SelectionChanged="DataGrid_SelectionChanged">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Model" Width="150"/>
-                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Color" Width="65"/>
-                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Sales Price" Width="90"/>
-                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Rent Price" Width="90"/>
-                                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Car Status" Width="90"/>
-                            </DataGrid.Columns>
-                            <ListBoxItem/>
-                        </DataGrid>
+                        <DataGrid x:Name="CarDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="396" Margin="7,48,0,0" VerticalAlignment="Top" Width="494"/>
                     </Grid>
                 </TabItem>
             </TabControl>

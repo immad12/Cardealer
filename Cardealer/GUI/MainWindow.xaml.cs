@@ -24,6 +24,7 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+            //CarDataGrid.ItemsSource = List of cars
         }
 
         #region Eventhandlers for Private Customers
@@ -77,10 +78,5 @@ namespace GUI
 
         }
         #endregion
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

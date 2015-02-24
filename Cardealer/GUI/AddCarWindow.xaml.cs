@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Domain;
 
 namespace GUI
 {
@@ -36,9 +37,22 @@ namespace GUI
         private void SaveCarButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO SAVE A CAR
+            //Cardealer.Instance.RegisterCar();
+
+            string type = (c)
 
             this.Close();
         }
         #endregion
+
+        private void CarRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TruckRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

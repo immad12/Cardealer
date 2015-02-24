@@ -5,16 +5,17 @@ using System.Text;
 
 namespace Domain
 {
-    class Business : Customer
+    public class Business : Customer
     {
-        public string SerialNumber { get; set; }
-        public string Fax { get; set; }
-        public string Email { get; set; }
         public string CompanyName { get; set; }
+        public string SerialNumber { get; set; }
+        public string Email { get; set; }
+        public string Fax { get; set; }
 
-        public Business()
+        public Business(String name, String serialno, String address, String phone, String fax, String email)
+            : base(address, phone)
         {
-            
+
         }
     }
 }

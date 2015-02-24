@@ -26,41 +26,29 @@ namespace GUI
         {
             InitializeComponent();
 
+            //Initialize data for the grids
             CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
             TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
+            PrivateDataGrid.ItemsSource = Cardealer.Instance.GetListOfPrivateCustomers();
+            BusinessDataGrid.ItemsSource = Cardealer.Instance.GetListOfBusinessCustomers();
         }
 
-        #region Eventhandlers for Private Customers
-        private void PrivateFindCustomer_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        #region Eventhandlers for Customers
         private void PrivateAddCustomer_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void PrivateEditCustomer_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region Eventhandlers for Business Customers
-        private void BusinessFindCustomer_Click(object sender, RoutedEventArgs e)
+        private void BusinessAddCustomer_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BusinessAddCustomer_Click(object sender, RoutedEventArgs e)
+        //Update the datagrids for private and business customers
+        private void UpdateCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void BusinessEditCustomer_Click(object sender, RoutedEventArgs e)
-        {
-
+            PrivateDataGrid.Items.Refresh();
+            BusinessDataGrid.Items.Refresh();
         }
         #endregion
 

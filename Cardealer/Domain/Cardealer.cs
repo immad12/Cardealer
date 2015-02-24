@@ -29,11 +29,35 @@ namespace Domain
 
         private List<Car> cars = new List<Car>();
         private List<Truck> trucks = new List<Truck>();
+        private List<Private> privateCustomers = new List<Private>();
+        private List<Business> businessCustomers = new List<Business>();
 
         public Cardealer()
         {
             CreateVehicleData();
         }
+
+        #region Customer methods
+        public void RegisterPrivateCustomer()
+        {
+
+        }
+
+        public void RegisterBusinessCustomer()
+        {
+
+        }
+
+        public List<Private> GetListOfPrivateCustomers()
+        {
+            return this.privateCustomers;
+        }
+
+        public List<Business> GetListOfBusinessCustomers()
+        {
+            return this.businessCustomers;
+        }
+        #endregion
 
         #region Vehicle methods
         public void RegisterCar(String carType, String model, String color, Double salesPrice, Double rentPrice)

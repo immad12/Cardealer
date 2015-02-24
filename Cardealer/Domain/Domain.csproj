@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cardealer.cs" />
+    <Compile Include="Contracts\Contract.cs" />
+    <Compile Include="Contracts\Leasing.cs" />
+    <Compile Include="Contracts\Sale.cs" />
     <Compile Include="Customer\Business.cs" />
     <Compile Include="Customer\Customer.cs" />
     <Compile Include="Customer\Private.cs" />

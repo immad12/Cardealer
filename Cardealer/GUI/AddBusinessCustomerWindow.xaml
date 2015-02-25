@@ -1,0 +1,28 @@
+﻿<Window x:Name="Private" x:Class="GUI.AddBusinessCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Business Customer" Height="298" Width="352" Background="#FF8194D3">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="78*"/>
+            <RowDefinition Height="191*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="135*"/>
+            <ColumnDefinition Width="152*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="labelCompanyName" Content="Company Name" HorizontalAlignment="Left" Margin="33,51,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="labelSerialNo" Content="Serial Number" HorizontalAlignment="Left" Margin="33,0,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="labelEmail" Content="Email" HorizontalAlignment="Left" Margin="33,26,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="labelAddress" Content="Address" HorizontalAlignment="Left" Margin="33,52,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="txtCompanyName" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="10,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
+        <TextBox x:Name="txtSerialNo" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="10,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Row="1"/>
+        <TextBox x:Name="txtEmail" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="10,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Row="1"/>
+        <TextBox x:Name="txtAddress" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Row="1"/>
+        <Label x:Name="labelPhone" Content="Phone" HorizontalAlignment="Left" Margin="33,78,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.598,1.819"/>
+        <TextBox x:Name="txtPhone" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="10,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Row="1"/>
+        <Button x:Name="btnClear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="33,137,0,0" Grid.Row="1" VerticalAlignment="Top" Width="96" Click="btnClear_Click"/>
+        <Button x:Name="btnSave" Content="Save" Grid.Column="2" HorizontalAlignment="Left" Height="25" Margin="24,137,0,0" Grid.Row="1" VerticalAlignment="Top" Width="106" Click="btnSave_Click"/>
+    </Grid>
+</Window>

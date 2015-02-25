@@ -38,14 +38,14 @@ namespace Domain
         }
 
         #region Customer methods
-        public void RegisterPrivateCustomer()
+        public void RegisterPrivateCustomer(String name, String address, String birthday, String phone, String gender)
         {
-
+            privateCustomers.Add(new Private(name, address, birthday, phone, gender));
         }
 
-        public void RegisterBusinessCustomer()
+        public void RegisterBusinessCustomer(String name, String serialno, String address, String phone, String fax, String email)
         {
-
+            businessCustomers.Add(new Business(name, serialno, address, phone, fax, email));
         }
 
         public List<Private> GetListOfPrivateCustomers()

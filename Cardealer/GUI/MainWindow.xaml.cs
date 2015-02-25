@@ -36,12 +36,14 @@ namespace GUI
         #region Eventhandlers for Customers
         private void PrivateAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            var newWindow = new AddPrivateCustomerWindow();
+            newWindow.Show();
         }
 
         private void BusinessAddCustomer_Click_1(object sender, RoutedEventArgs e)
         {
-
+            var newWindow = new AddBusinessCustomerWindow();
+            newWindow.Show();
         }
 
         //Update the datagrids for private and business customers
@@ -106,5 +108,10 @@ namespace GUI
             newWindow.CarRentPrice.Text = row_data.RentPrice + "";
         }
         #endregion
+
+        private void PrivateDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

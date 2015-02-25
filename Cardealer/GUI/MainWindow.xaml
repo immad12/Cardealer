@@ -65,15 +65,21 @@
                             <ColumnDefinition Width="32*"/>
                             <ColumnDefinition Width="34*"/>
                             <ColumnDefinition Width="36*"/>
-                            <ColumnDefinition Width="291*"/>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="274*"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox x:Name="comboChooseCar" Grid.ColumnSpan="5" Grid.Column="1" HorizontalAlignment="Left" Margin="42,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboChooseCar_SelectionChanged"/>
-                        <Label x:Name="lblChooseCar" Content="Choose a car" Grid.Column="1" HorizontalAlignment="Left" Margin="46,34,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="5"/>
-                        <Label x:Name="lblModel" Content="Model" Grid.Column="7" HorizontalAlignment="Left" Height="55" Margin="68,55,0,0" VerticalAlignment="Top" Width="97"/>
-                        <Label x:Name="lblPrice" Content="Price" Grid.Column="7" HorizontalAlignment="Left" Margin="68,85,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblColor" Content="Color" Grid.Column="7" HorizontalAlignment="Left" Margin="68,116,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblSpecifications" Content="Specifications" Grid.Column="7" HorizontalAlignment="Left" Margin="68,20,0,0" VerticalAlignment="Top"/>
-                        <Button x:Name="btnBuy" Content="Buy" Grid.Column="7" HorizontalAlignment="Left" Height="26" Margin="154,168,0,0" VerticalAlignment="Top" Width="52" Click="btnBuy_Click"/>
+                        <ComboBox x:Name="comboChooseCar" Grid.ColumnSpan="5" Grid.Column="1" HorizontalAlignment="Left" Margin="42,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboChooseCar_SelectionChanged" Loaded="ComboChooseCarLoadded"/>
+                        <Label x:Name="lblChooseCar" Content="Choose a car" Grid.Column="1" HorizontalAlignment="Left" Margin="46,32,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="5" FontWeight="Bold"/>
+                        <Label x:Name="lblModel" Content="Model" Grid.Column="8" HorizontalAlignment="Left" Height="55" Margin="51,51,0,0" VerticalAlignment="Top" Width="97"/>
+                        <Label x:Name="lblPrice" Content="Price" Grid.Column="8" HorizontalAlignment="Left" Margin="51,81,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblColor" Content="Color" Grid.Column="8" HorizontalAlignment="Left" Margin="51,112,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblSpecifications" Content="Specifications" Grid.Column="8" HorizontalAlignment="Left" Margin="51,20,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+                        <Button x:Name="btnBuy" Content="Buy" Grid.Column="8" HorizontalAlignment="Left" Height="26" Margin="137,278,0,0" VerticalAlignment="Top" Width="52" Click="btnBuy_Click"/>
+                        <ComboBox x:Name="comboChooseCustomer" Grid.ColumnSpan="5" Grid.Column="1" HorizontalAlignment="Left" Margin="42,205,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboChooseCustomer_SelectionChanged" Loaded="comboChooseACustomerLoaded">
+                            <Label Content="Label"/>
+                        </ComboBox>
+                        <Label x:Name="lblCustomer" Content="Choose a customer" Grid.Column="1" HorizontalAlignment="Right" Margin="0,175,0,0" VerticalAlignment="Top" Grid.ColumnSpan="5" Height="27" Width="127" FontWeight="Bold"/>
+                        <Label x:Name="lblSelectedCustomer" Content="Customer" Grid.Column="8" HorizontalAlignment="Left" Height="43" Margin="51,175,0,0" VerticalAlignment="Top" Width="181" FontWeight="Bold" FontSize="16"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Vehicles" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="57" Margin="-123,0,0,0">

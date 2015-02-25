@@ -22,6 +22,11 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        /* private Car selectedCar;
+         private Truck selectedTruck;
+         private Private selectedPrivate;
+         private Business selectedBusiness; */
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +36,37 @@ namespace GUI
             BusinessDataGrid.ItemsSource = Cardealer.Instance.GetListOfBusinessCustomers();
             CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
             TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
+
+
+            //Initialize all comboboxes
+            InitComboboxes();
+        }
+
+        private void InitComboboxes()
+        {
+            //Customer combobox
+            comboBoxCustomer.Items.Add("---- Private ----");
+            foreach (Private privateCustomer in Cardealer.Instance.GetListOfPrivateCustomers())
+            {
+                comboBoxCustomer.Items.Add(privateCustomer.Name);
+            }
+            comboBoxCustomer.Items.Add("---- Business ----");
+            foreach (Business businessCustomer in Cardealer.Instance.GetListOfBusinessCustomers())
+            {
+                comboBoxCustomer.Items.Add(businessCustomer.CompanyName);
+            }
+
+            //Vehicle combobox
+            comboBoxVehicle.Items.Add("---- Cars ----");
+            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            {
+                comboBoxVehicle.Items.Add(car.Model);
+            }
+            comboBoxVehicle.Items.Add("---- Trucks ----");
+            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            {
+                comboBoxVehicle.Items.Add(truck.Model);
+            }
         }
 
         #region Eventhandlers for Customers
@@ -129,7 +165,7 @@ namespace GUI
 
             //Get the information from the row
             newWindow.CarRadioButton.IsChecked = true;
-            var row_data = (Vehicle)CarDataGrid.SelectedItem;
+            var row_data = (Vehicles)CarDataGrid.SelectedItem;
             newWindow.CarModel.Text = row_data.Model;
             newWindow.CarColor.Text = row_data.Color;
             newWindow.CarSalePrice.Text = row_data.SalesPrice + "";
@@ -149,11 +185,134 @@ namespace GUI
             newWindow.CarRentPrice.IsReadOnly = true;
 
             newWindow.TruckRadioButton.IsChecked = true;
-            var row_data = (Vehicle)TruckDataGrid.SelectedItem;
+            var row_data = (Vehicles)TruckDataGrid.SelectedItem;
             newWindow.CarModel.Text = row_data.Model;
             newWindow.CarColor.Text = row_data.Color;
             newWindow.CarSalePrice.Text = row_data.SalesPrice + "";
             newWindow.CarRentPrice.Text = row_data.RentPrice + "";
+        }
+        #endregion
+
+        #region Eventhandlers for Leasing
+        private void btnLease_Click(object sender, RoutedEventArgs e)
+        {
+            Vehicles vehicle = null;
+            Private privatCustomer = null;
+            Business businessCustomer = null;
+            int rentPeriod = int.Parse(txtRentPeriod.Text);
+
+            #region Instantiate Vehicle and customer
+            foreach (Private privateCust in Cardealer.Instance.GetListOfPrivateCustomers())
+            {
+                if (privateCust.Name == comboBoxCustomer.SelectedItem.ToString())
+                {
+                    privatCustomer = privateCust;
+                }
+            }
+            foreach (Business businessCust in Cardealer.Instance.GetListOfBusinessCustomers())
+            {
+                if (businessCust.CompanyName == comboBoxCustomer.SelectedItem.ToString())
+                {
+                    businessCustomer = businessCust;
+                }
+            }
+
+            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            {
+                if (car.Model == comboBoxVehicle.SelectedItem.ToString())
+                {
+                    vehicle = (Vehicles)car;
+                }
+            }
+            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            {
+                if (truck.Model == comboBoxVehicle.SelectedItem.ToString())
+                {
+                    vehicle = (Vehicles)truck;
+                }
+            }
+            #endregion
+
+            if (!String.IsNullOrWhiteSpace(txtName.Text) && !String.IsNullOrWhiteSpace(txtModel.Text)
+                && !String.IsNullOrWhiteSpace(txtRentPeriod.Text) && !String.IsNullOrWhiteSpace(txtTotalPrice.Text))
+            {
+                if (vehicle != null && privatCustomer != null)
+                {
+                    Cardealer.Instance.LeasePrivate(vehicle, privatCustomer, rentPeriod);
+                    MessageBox.Show("Leasing for: " + privatCustomer.Name + " and the vehicle " + vehicle.Model
+                        + Environment.NewLine
+                         + "Rent period of " + rentPeriod + " months for " + txtTotalPrice.Text + " DKK");
+                }
+                if (vehicle != null && businessCustomer != null)
+                {
+                    Cardealer.Instance.LeaseBusiness(vehicle, businessCustomer, rentPeriod);
+                    MessageBox.Show("Leasing for: " + businessCustomer.CompanyName + " and the vehicle "
+                         + vehicle.Model + Environment.NewLine
+                         + "Rent period of " + rentPeriod + " months for " + txtTotalPrice.Text + " DKK");
+                }
+            }
+        }
+
+        private void btnCalculateLeasing_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtRentprice.Text) && !String.IsNullOrWhiteSpace(txtRentPeriod.Text))
+            {
+                double rentPrice = Double.Parse(txtRentprice.Text);
+                int rentPeriod = int.Parse(txtRentPeriod.Text);
+                double total = Cardealer.Instance.GetTotalLeasingPrice(rentPrice, rentPeriod);
+                txtTotalPrice.Text = total + "";
+            }
+            else
+            {
+                if (String.IsNullOrEmpty(txtRentprice.Text))
+                    MessageBox.Show("Please select a vehicle");
+                if (String.IsNullOrWhiteSpace(txtRentPeriod.Text))
+                    MessageBox.Show("Please define the rent period");
+            }
+        }
+
+        private void comboBoxCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Private privateCustomer in Cardealer.Instance.GetListOfPrivateCustomers())
+            {
+                if (privateCustomer.Name == comboBoxCustomer.SelectedItem.ToString())
+                {
+                    txtName.Text = privateCustomer.Name;
+                    txtAddress.Text = privateCustomer.Address;
+                }
+            }
+
+            foreach (Business businessCustomer in Cardealer.Instance.GetListOfBusinessCustomers())
+            {
+                if (businessCustomer.CompanyName == comboBoxCustomer.SelectedItem.ToString())
+                {
+                    txtName.Text = businessCustomer.CompanyName;
+                    txtAddress.Text = businessCustomer.Address;
+                }
+            }
+        }
+
+        private void comboBoxVehicle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            {
+                if (car.Model == comboBoxVehicle.SelectedItem.ToString())
+                {
+                    txtModel.Text = car.Model;
+                    txtColor.Text = car.Color;
+                    txtRentprice.Text = car.RentPrice + "";
+                }
+            }
+
+            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            {
+                if (truck.Model == comboBoxVehicle.SelectedItem.ToString())
+                {
+                    txtModel.Text = truck.Model;
+                    txtColor.Text = truck.Color;
+                    txtRentprice.Text = truck.RentPrice + "";
+                }
+            }
         }
         #endregion
     }

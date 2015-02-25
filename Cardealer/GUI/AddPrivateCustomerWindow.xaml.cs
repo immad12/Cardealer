@@ -25,19 +25,8 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void RadioButtonPrivate_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void radioBtnBusiness_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            
             String name = txtName.Text;
             String address = txtAddress.Text;
             String phone = txtPhone.Text;
@@ -47,6 +36,10 @@ namespace GUI
             if (btnSave.Content.ToString() == "Save" && txtName.SelectedText != null && txtAddress.SelectedText != null && txtBirthday != null && txtPhone != null && genderType.Length > 1)
             {
                 Cardealer.Instance.RegisterPrivateCustomer(name, address, birthday, phone, genderType);
+                this.Close();
+            }
+            else if (btnSave.Content.ToString() == "OK")
+            {
                 this.Close();
             }
         }

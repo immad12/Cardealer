@@ -14,7 +14,9 @@ namespace Domain
         public Private(String name, String address, String birthday, String phone, String gender)
             : base(address, phone)
         {
-
+            this.Name = name;
+            this.Birthdate = birthday;
+            this.Gender = gender;
         }
     }
 }

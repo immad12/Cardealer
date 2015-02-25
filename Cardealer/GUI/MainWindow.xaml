@@ -4,10 +4,6 @@
         Title="Landmanden's Cardealership" Height="513" Width="525">
     <Grid>
         <Grid Margin="10,10,-10,-10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="223*"/>
-                <ColumnDefinition Width="294*"/>
-            </Grid.ColumnDefinitions>
             <TabControl Grid.ColumnSpan="2" Margin="-10,-10,10,10" Background="#FF8194D3">
                 <TabItem x:Name="HomeTab" Header="Home">
                     <TabItem.Background>
@@ -42,19 +38,13 @@
                         </LinearGradientBrush>
                     </TabItem.Background>
                     <Grid x:Name="___No_Name_" Background="#FF8194D3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="130*"/>
-                            <ColumnDefinition Width="16*"/>
-                            <ColumnDefinition Width="193*"/>
-                            <ColumnDefinition Width="172*"/>
-                        </Grid.ColumnDefinitions>
                         <Button x:Name="PrivateAddCustomer" Content="Add Private Customer" HorizontalAlignment="Left" Height="30" Margin="20,0,0,0" VerticalAlignment="Top" Width="140" Click="PrivateAddCustomer_Click" Grid.ColumnSpan="3"/>
-                        <Button x:Name="BusinessAddCustomer" Content="Add Business Customer" HorizontalAlignment="Left" Height="30" Margin="32,0,0,0" VerticalAlignment="Top" Width="140" Click="BusinessAddCustomer_Click_1" Grid.Column="2"/>
-                        <DataGrid x:Name="PrivateDataGrid" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="170" Margin="10,67,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="95" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" SelectionChanged="PrivateDataGrid_SelectionChanged"/>
-                        <Button x:Name="UpdateCustomerButton" Content="Update Customer Lists" HorizontalAlignment="Left" Height="30" Margin="2,0,0,0" VerticalAlignment="Top" Width="140" Grid.Column="3" Click="UpdateCustomerButton_Click"/>
+                        <Button x:Name="BusinessAddCustomer" Content="Add Business Customer" HorizontalAlignment="Left" Height="30" Margin="191,0,0,0" VerticalAlignment="Top" Width="140" Click="BusinessAddCustomer_Click_1"/>
+                        <DataGrid x:Name="PrivateDataGrid" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="170" Margin="10,67,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="95" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" MouseDoubleClick="PrivateDataGrid_MouseDoubleClick"/>
+                        <Button x:Name="UpdateCustomerButton" Content="Update Customer Lists" HorizontalAlignment="Left" Height="30" Margin="357,0,0,0" VerticalAlignment="Top" Width="140" Click="UpdateCustomerButton_Click"/>
                         <Label Content="Private customers:" HorizontalAlignment="Left" Height="32" Margin="10,30,0,0" VerticalAlignment="Top" Width="175" FontSize="16" Grid.ColumnSpan="3"/>
                         <Label Content="Business customers:" HorizontalAlignment="Left" Height="34" Margin="10,237,0,0" VerticalAlignment="Top" Width="163" FontSize="16" Grid.ColumnSpan="3"/>
-                        <DataGrid x:Name="BusinessDataGrid" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="170" Margin="10,271,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="80" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True"/>
+                        <DataGrid x:Name="BusinessDataGrid" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="170" Margin="10,271,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="80" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True" MouseDoubleClick="BusinessDataGrid_MouseDoubleClick"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Sales/Leasing" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="122" Margin="56,0,-56,0">

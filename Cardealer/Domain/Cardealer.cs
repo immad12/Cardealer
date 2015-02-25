@@ -35,6 +35,7 @@ namespace Domain
         public Cardealer()
         {
             CreateVehicleData();
+            CreateCustomerData();
         }
 
         #region Customer methods
@@ -43,9 +44,9 @@ namespace Domain
             privateCustomers.Add(new Private(name, address, birthday, phone, gender));
         }
 
-        public void RegisterBusinessCustomer(String name, String serialno, String address, String phone, String fax, String email)
+        public void RegisterBusinessCustomer(String name, String serialno, String address, String phone, String email)
         {
-            businessCustomers.Add(new Business(name, serialno, address, phone, fax, email));
+            businessCustomers.Add(new Business(name, serialno, address, phone, email));
         }
 
         public List<Private> GetListOfPrivateCustomers()
@@ -56,6 +57,21 @@ namespace Domain
         public List<Business> GetListOfBusinessCustomers()
         {
             return this.businessCustomers;
+        }
+
+        public void CreateCustomerData()
+        {
+            // Create private customers to the cardealership - later this would be in the persistence layer
+            RegisterPrivateCustomer("Peter Jacobsen", "Solvænget 5", "24-03-1973", "23658923", "male");
+            RegisterPrivateCustomer("Søren Petersen", "Torps Alle 13", "17-10-1969", "89278400", "male");
+            RegisterPrivateCustomer("Marie Nielsen", "Heliosvænget 22", "01-05-1988", "89273929", "female");
+            RegisterPrivateCustomer("Jakob Mogensen", "Mågevej 12", "03-08-1983", "64021032", "male");
+            RegisterPrivateCustomer("Anne Sørensen", "Nørregade 9", "01-12-1975", "63862753", "female");
+
+            // Create business customers to the cardealership - later this would be in the persistence layer
+            RegisterBusinessCustomer("BioCover", "20235587", "Kalundborgvej 34", "75728319", "mts@Biocover.dk");
+            RegisterBusinessCustomer("Apricity Games", "10047934", "Brogade 2", "56372200", "games@apricity.com");
+            RegisterBusinessCustomer("Hair&Nails", "49500360", "Søndergade 17", "60219043", "beauty@hairandnails.com");
         }
         #endregion
 

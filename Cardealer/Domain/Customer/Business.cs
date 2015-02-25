@@ -10,12 +10,13 @@ namespace Domain
         public string CompanyName { get; set; }
         public string SerialNumber { get; set; }
         public string Email { get; set; }
-        public string Fax { get; set; }
 
-        public Business(String name, String serialno, String address, String phone, String fax, String email)
+        public Business(String name, String serialno, String address, String phone, String email)
             : base(address, phone)
         {
-
+            this.CompanyName = name;
+            this.SerialNumber = serialno;
+            this.Email = email;
         }
     }
 }

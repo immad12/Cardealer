@@ -9,12 +9,14 @@ namespace Domain
     {
         public string Name { get; set; }
         public string Birthdate { get; set; }
-        public int Gender { get; set; }
+        public string Gender { get; set; }
 
-        public Private(String name, String address, String birthday, String phone, int gender)
+        public Private(String name, String address, String birthday, String phone, String gender)
             : base(address, phone)
         {
-
+            this.Name = name;
+            this.Birthdate = birthday;
+            this.Gender = gender;
         }
     }
 }

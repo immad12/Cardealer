@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Vehicle
 {
-    public class Vehicle
+    public class Vehicles
     {
         public String Model { get; set; }
         public String Color { get; set; }
@@ -13,7 +13,7 @@ namespace Domain.Vehicle
         public double RentPrice { get; set; }
         public String CarState { get; set; }
 
-        public Vehicle(String model, String color, double salesPrice, double rentPrice)
+        public Vehicles(String model, String color, double salesPrice, double rentPrice)
         {
             this.Model = model;
             this.Color = color;

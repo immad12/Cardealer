@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Domain.Vehicle;
+using Domain.Contracts;
 
 namespace Domain
 {
@@ -31,6 +32,7 @@ namespace Domain
         private List<Truck> trucks = new List<Truck>();
         private List<Private> privateCustomers = new List<Private>();
         private List<Business> businessCustomers = new List<Business>();
+        private List<Leasing> leasingContracts = new List<Leasing>();
 
         public Cardealer()
         {
@@ -112,6 +114,29 @@ namespace Domain
             RegisterCar("truck", "Iveco Daily", "Silver", 325200, 2780);
             RegisterCar("truck", "Volvo FE", "Blue", 623750, 5280);
             RegisterCar("truck", "Volvo FM400", "Blue", 647255, 6725);
+        }
+        #endregion
+
+        #region Leasiong methods
+        public void LeasePrivate(Vehicles vehicle, Private customer, int rentPeriod)
+        {
+            leasingContracts.Add(new Leasing(vehicle, customer, rentPeriod));
+        }
+
+        public void LeaseBusiness(Vehicles vehicle, Business customer, int rentPeriod)
+        {
+            leasingContracts.Add(new Leasing(vehicle, customer, rentPeriod));
+        }
+
+        public List<Leasing> getLeasingContrats()
+        {
+            return leasingContracts;
+        }
+
+        public double GetTotalLeasingPrice(double price, int period)
+        {
+            double total = price * period;
+            return total;
         }
         #endregion
     }

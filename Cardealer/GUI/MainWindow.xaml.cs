@@ -27,10 +27,10 @@ namespace GUI
             InitializeComponent();
 
             //Initialize data for the grids
-            CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
-            TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
             PrivateDataGrid.ItemsSource = Cardealer.Instance.GetListOfPrivateCustomers();
             BusinessDataGrid.ItemsSource = Cardealer.Instance.GetListOfBusinessCustomers();
+            CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
+            TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
         }
 
         #region Eventhandlers for Customers
@@ -51,6 +51,50 @@ namespace GUI
         {
             PrivateDataGrid.Items.Refresh();
             BusinessDataGrid.Items.Refresh();
+        }
+
+        private void PrivateDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var newWindow = new AddPrivateCustomerWindow();
+            newWindow.Show();
+            newWindow.btnSave.Content = "OK";
+            newWindow.btnSave.Margin = new Thickness(-30, 156, 0, 0);
+            newWindow.btnClear.Visibility = Visibility.Hidden;
+            newWindow.txtName.IsReadOnly = true;
+            newWindow.txtAddress.IsReadOnly = true;
+            newWindow.txtPhone.IsReadOnly = true;
+            newWindow.txtBirthday.IsReadOnly = true;
+
+            var row_data = (Private)PrivateDataGrid.SelectedItem;
+            newWindow.txtName.Text = row_data.Name;
+            newWindow.txtAddress.Text = row_data.Address;
+            newWindow.txtPhone.Text = row_data.Phone;
+            newWindow.txtBirthday.Text = row_data.Birthdate;
+            if (row_data.Gender == "male")
+                newWindow.radioBtnMale.IsChecked = true;
+            else
+                newWindow.radioBtnFemale.IsChecked = true;
+        }
+
+        private void BusinessDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var newWindow = new AddBusinessCustomerWindow();
+            newWindow.Show();
+            newWindow.btnSave.Content = "OK";
+            newWindow.btnSave.Margin = new Thickness(-40, 137, 0, 0);
+            newWindow.btnClear.Visibility = Visibility.Hidden;
+            newWindow.txtCompanyName.IsReadOnly = true;
+            newWindow.txtSerialNo.IsReadOnly = true;
+            newWindow.txtAddress.IsReadOnly = true;
+            newWindow.txtPhone.IsReadOnly = true;
+            newWindow.txtEmail.IsReadOnly = true;
+
+            var row_data = (Business)BusinessDataGrid.SelectedItem;
+            newWindow.txtCompanyName.Text = row_data.CompanyName;
+            newWindow.txtSerialNo.Text = row_data.SerialNumber;
+            newWindow.txtAddress.Text = row_data.Address;
+            newWindow.txtPhone.Text = row_data.Phone;
+            newWindow.txtEmail.Text = row_data.Email;
         }
         #endregion
 
@@ -112,49 +156,5 @@ namespace GUI
             newWindow.CarRentPrice.Text = row_data.RentPrice + "";
         }
         #endregion
-
-        private void PrivateDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var newWindow = new AddPrivateCustomerWindow();
-            newWindow.Show();
-            newWindow.btnSave.Content = "OK";
-            newWindow.btnSave.Margin = new Thickness(-30, 156, 0, 0);
-            newWindow.btnClear.Visibility = Visibility.Hidden;
-            newWindow.txtName.IsReadOnly = true;
-            newWindow.txtAddress.IsReadOnly = true;
-            newWindow.txtPhone.IsReadOnly = true;
-            newWindow.txtBirthday.IsReadOnly = true;
-
-            var row_data = (Private)PrivateDataGrid.SelectedItem;
-            newWindow.txtName.Text = row_data.Name;
-            newWindow.txtAddress.Text = row_data.Address;
-            newWindow.txtPhone.Text = row_data.Phone;
-            newWindow.txtBirthday.Text = row_data.Birthdate;
-            if (row_data.Gender == "male")
-                newWindow.radioBtnMale.IsChecked = true;
-            else
-                newWindow.radioBtnFemale.IsChecked = true;
-        }
-
-        private void BusinessDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var newWindow = new AddBusinessCustomerWindow();
-            newWindow.Show();
-            newWindow.btnSave.Content = "OK";
-            newWindow.btnSave.Margin = new Thickness(-40, 137, 0, 0);
-            newWindow.btnClear.Visibility = Visibility.Hidden;
-            newWindow.txtCompanyName.IsReadOnly = true;
-            newWindow.txtSerialNo.IsReadOnly = true;
-            newWindow.txtAddress.IsReadOnly = true;
-            newWindow.txtPhone.IsReadOnly = true;
-            newWindow.txtEmail.IsReadOnly = true;
-
-            var row_data = (Business)BusinessDataGrid.SelectedItem;
-            newWindow.txtCompanyName.Text = row_data.CompanyName;
-            newWindow.txtSerialNo.Text = row_data.SerialNumber;
-            newWindow.txtAddress.Text = row_data.Address;
-            newWindow.txtPhone.Text = row_data.Phone;
-            newWindow.txtEmail.Text = row_data.Email;
-        }
     }
 }

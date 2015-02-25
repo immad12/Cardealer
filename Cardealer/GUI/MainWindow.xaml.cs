@@ -31,6 +31,8 @@ namespace GUI
             TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
             PrivateDataGrid.ItemsSource = Cardealer.Instance.GetListOfPrivateCustomers();
             BusinessDataGrid.ItemsSource = Cardealer.Instance.GetListOfBusinessCustomers();
+
+            initComboBox();
         }
 
         #region Eventhandlers for Customers
@@ -155,6 +157,44 @@ namespace GUI
             newWindow.txtAddress.Text = row_data.Address;
             newWindow.txtPhone.Text = row_data.Phone;
             newWindow.txtEmail.Text = row_data.Email;
+        }
+
+        private void initComboBox()
+        {
+            // Cars
+            comboChooseCar.Items.Add("---- Cars ----");
+
+            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            {
+                comboChooseCar.Items.Add(car.Model);
+            }
+
+            // Trucks
+            comboChooseCar.Items.Add("---- Trucks ----");
+
+            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            {
+                comboChooseCar.Items.Add(truck.Model);
+            }
+        }
+
+        // Clicking on a car in the combobox
+        private void comboChooseCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           foreach(Car car in Cardealer.Instance.GetListOfCars())
+           {
+               if (car.Model == comboChooseCar.SelectedItem)
+               {
+                   lblModel.Content = car.Model;
+                   lblPrice.Content = car.SalesPrice;
+                   lblColor.Content = car.Color;
+               }
+           }
+        }
+
+        private void btnBuy_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

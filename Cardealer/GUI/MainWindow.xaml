@@ -47,7 +47,7 @@
                         <DataGrid x:Name="BusinessDataGrid" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="170" Margin="10,271,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="80" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True" MouseDoubleClick="BusinessDataGrid_MouseDoubleClick"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Sales/Leasing" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="122" Margin="56,0,-56,0">
+                <TabItem Header="Sales" HorizontalAlignment="Left" Width="122" Margin="56,0,-56,0" Height="20" VerticalAlignment="Top">
                     <TabItem.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -59,11 +59,21 @@
                     <Grid x:Name="BusinessEditCustomer" Background="#FF8194D3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="12*"/>
-                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="88*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="32*"/>
                             <ColumnDefinition Width="34*"/>
-                            <ColumnDefinition Width="324*"/>
+                            <ColumnDefinition Width="36*"/>
+                            <ColumnDefinition Width="291*"/>
                         </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="comboChooseCar" Grid.ColumnSpan="5" Grid.Column="1" HorizontalAlignment="Left" Margin="42,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboChooseCar_SelectionChanged"/>
+                        <Label x:Name="lblChooseCar" Content="Choose a car" Grid.Column="1" HorizontalAlignment="Left" Margin="46,34,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="5"/>
+                        <Label x:Name="lblModel" Content="Model" Grid.Column="7" HorizontalAlignment="Left" Height="55" Margin="68,55,0,0" VerticalAlignment="Top" Width="97"/>
+                        <Label x:Name="lblPrice" Content="Price" Grid.Column="7" HorizontalAlignment="Left" Margin="68,85,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblColor" Content="Color" Grid.Column="7" HorizontalAlignment="Left" Margin="68,116,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblSpecifications" Content="Specifications" Grid.Column="7" HorizontalAlignment="Left" Margin="68,20,0,0" VerticalAlignment="Top"/>
+                        <Button x:Name="btnBuy" Content="Buy" Grid.Column="7" HorizontalAlignment="Left" Height="26" Margin="154,168,0,0" VerticalAlignment="Top" Width="52" Click="btnBuy_Click"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Vehicles" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="57" Margin="-123,0,0,0">

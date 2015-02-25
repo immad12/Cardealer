@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Contracts
 {
-    class Sale
+    public class Sale
     {
         //Sale: Information of car and customer and date
     }

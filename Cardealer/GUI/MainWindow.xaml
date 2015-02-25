@@ -1,8 +1,103 @@
 ﻿<Window x:Class="GUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Landmanden's Cardealership" Height="513" Width="525">
     <Grid>
-        
+        <Grid Margin="10,10,-10,-10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="223*"/>
+                <ColumnDefinition Width="294*"/>
+            </Grid.ColumnDefinitions>
+            <TabControl Grid.ColumnSpan="2" Margin="-10,-10,10,10" Background="#FF8194D3">
+                <TabItem x:Name="HomeTab" Header="Home">
+                    <TabItem.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FF8194D3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TabItem.Background>
+                    <Grid Background="#FF8194D3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="57*"/>
+                            <RowDefinition Height="394*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="77*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="410*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="&#x9;Welcome to &#xD;&#xA;Landmanden's Cardealership!" HorizontalAlignment="Center" Height="71" Margin="56,10,-1,0" VerticalAlignment="Top" Width="452" FontSize="20" FontWeight="Bold" FontFamily="Castellar" HorizontalContentAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+                        <Label Content="Management system" HorizontalAlignment="Center" Height="37" Margin="43,10,140,0" VerticalAlignment="Top" Width="227" FontSize="20" Grid.Row="1" HorizontalContentAlignment="Center" Grid.Column="2"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Customers">
+                    <TabItem.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FF8194D3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TabItem.Background>
+                    <Grid x:Name="___No_Name_" Background="#FF8194D3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="112*"/>
+                            <ColumnDefinition Width="57*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="PrivateAddCustomer" Content="Add Private Customer" HorizontalAlignment="Left" Height="30" Margin="20,0,0,0" VerticalAlignment="Top" Width="140" Click="PrivateAddCustomer_Click"/>
+                        <Button x:Name="BusinessAddCustomer" Content="Add Business Customer" HorizontalAlignment="Left" Height="30" Margin="178,0,0,0" VerticalAlignment="Top" Width="140" Click="BusinessAddCustomer_Click_1"/>
+                        <DataGrid x:Name="PrivateDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="170" Margin="10,67,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="95" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True"/>
+                        <Button x:Name="UpdateCustomerButton" Content="Update Customer Lists" HorizontalAlignment="Left" Height="30" Margin="2,0,0,0" VerticalAlignment="Top" Width="140" Grid.Column="1" Click="UpdateCustomerButton_Click"/>
+                        <Label Content="Private customers:" HorizontalAlignment="Left" Height="32" Margin="10,30,0,0" VerticalAlignment="Top" Width="175" FontSize="16"/>
+                        <Label Content="Business customers:" HorizontalAlignment="Left" Height="34" Margin="10,237,0,0" VerticalAlignment="Top" Width="163" FontSize="16"/>
+                        <DataGrid x:Name="BusinessDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="170" Margin="10,271,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="80" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly="True"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Sales/Leasing" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="122" Margin="56,0,-56,0">
+                    <TabItem.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FF8194D3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TabItem.Background>
+                    <Grid x:Name="BusinessEditCustomer" Background="#FF8194D3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"/>
+                            <ColumnDefinition Width="105*"/>
+                            <ColumnDefinition Width="32*"/>
+                            <ColumnDefinition Width="34*"/>
+                            <ColumnDefinition Width="324*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Vehicles" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="57" Margin="-123,0,0,0">
+                    <TabItem.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                            <GradientStop Color="#FF8194D3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TabItem.Background>
+                    <Grid Background="#FF8194D3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="196*"/>
+                            <ColumnDefinition Width="311*"/>
+                            <ColumnDefinition Width="0*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="AddCar_Copy" Content="Add Vehicle" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" VerticalAlignment="Top" Width="105" Click="AddCar_Click"/>
+                        <DataGrid x:Name="CarDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="170" Margin="10,66,0,0" VerticalAlignment="Top" Width="487" MinColumnWidth="95" CanUserResizeColumns="False" CanUserResizeRows="False" MouseDoubleClick="CarDataGrid_MouseDoubleClick" CanUserReorderColumns="False" IsReadOnly="True"/>
+                        <DataGrid x:Name="TruckDataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="170" Margin="10,281,0,0" VerticalAlignment="Top" Width="487"  MinColumnWidth="95" CanUserResizeRows="False" MouseDoubleClick="TruckDataGrid_MouseDoubleClick" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False"/>
+                        <Label Content="Cars:" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" FontSize="16" Width="86"/>
+                        <Label Content="Trucks:" HorizontalAlignment="Left" Height="30" Margin="10,246,0,0" VerticalAlignment="Top" Width="85" FontSize="16"/>
+                        <Button x:Name="UpdateCarButton" Content="Update Vehicles" HorizontalAlignment="Left" Height="30" Margin="134,0,0,0" VerticalAlignment="Top" Width="105" Click="UpdateCarButton_Click" Grid.ColumnSpan="2"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
 </Window>

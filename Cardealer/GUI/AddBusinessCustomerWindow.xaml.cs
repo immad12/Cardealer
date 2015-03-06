@@ -36,11 +36,11 @@ namespace GUI
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            String name = txtCompanyName.Text;
-            String serialno = txtSerialNo.Text;
-            String address = txtAddress.Text;
-            String phone = txtPhone.Text;
-            String email = txtEmail.Text;
+            string name = txtCompanyName.Text;
+            string serialno = txtSerialNo.Text;
+            string address = txtAddress.Text;
+            string phone = txtPhone.Text;
+            string email = txtEmail.Text;
 
             if (btnSave.Content.ToString() == "Save" && txtCompanyName.SelectedText != null && txtAddress.SelectedText != null 
                 && txtSerialNo.SelectedText != null && txtPhone.SelectedText != null && txtEmail.SelectedText != null)

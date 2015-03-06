@@ -233,8 +233,8 @@ namespace GUI
             }
             #endregion
 
-            if (!String.IsNullOrWhiteSpace(txtName.Text) && !String.IsNullOrWhiteSpace(txtModel.Text)
-                && !String.IsNullOrWhiteSpace(txtRentPeriod.Text) && !String.IsNullOrWhiteSpace(txtTotalPrice.Text))
+            if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtModel.Text)
+                && !string.IsNullOrWhiteSpace(txtRentPeriod.Text) && !string.IsNullOrWhiteSpace(txtTotalPrice.Text))
             {
                 if (vehicle != null && privatCustomer != null)
                 {
@@ -255,7 +255,7 @@ namespace GUI
 
         private void btnCalculateLeasing_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(txtRentprice.Text) && !String.IsNullOrWhiteSpace(txtRentPeriod.Text))
+            if (!string.IsNullOrWhiteSpace(txtRentprice.Text) && !string.IsNullOrWhiteSpace(txtRentPeriod.Text))
             {
                 double rentPrice = Double.Parse(txtRentprice.Text);
                 int rentPeriod = int.Parse(txtRentPeriod.Text);
@@ -264,9 +264,9 @@ namespace GUI
             }
             else
             {
-                if (String.IsNullOrEmpty(txtRentprice.Text))
+                if (string.IsNullOrEmpty(txtRentprice.Text))
                     MessageBox.Show("Please select a vehicle");
-                if (String.IsNullOrWhiteSpace(txtRentPeriod.Text))
+                if (string.IsNullOrWhiteSpace(txtRentPeriod.Text))
                     MessageBox.Show("Please define the rent period");
             }
         }

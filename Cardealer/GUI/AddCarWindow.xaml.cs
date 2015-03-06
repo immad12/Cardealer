@@ -41,11 +41,11 @@ namespace GUI
         //Create a new vehicle
         private void SaveCarButton_Click(object sender, RoutedEventArgs e)
         {
-            String type = (CarRadioButton.IsChecked == true) ? "car" : "truck";
-            String model = CarModel.Text;
-            String carColor = CarColor.Text;
-            double salesPrice = Double.Parse(CarSalePrice.Text);
-            double rentPrice = Double.Parse(CarRentPrice.Text);
+            string type = (CarRadioButton.IsChecked == true) ? "car" : "truck";
+            string model = CarModel.Text;
+            string carColor = CarColor.Text;
+            double salesPrice = double.Parse(CarSalePrice.Text);
+            double rentPrice = double.Parse(CarRentPrice.Text);
 
             if (SaveCarButton.Content.ToString() == "Save" && CarModel.SelectedText != null && CarColor.SelectedText != null && salesPrice > 0 && rentPrice > 0)
             {

@@ -41,12 +41,12 @@ namespace Domain
         }
 
         #region Customer methods
-        public void RegisterPrivateCustomer(String name, String address, String birthday, String phone, String gender)
+        public void RegisterPrivateCustomer(string name, string address, string birthday, string phone, string gender)
         {
             privateCustomers.Add(new Private(name, address, birthday, phone, gender));
         }
 
-        public void RegisterBusinessCustomer(String name, String serialno, String address, String phone, String email)
+        public void RegisterBusinessCustomer(string name, string serialno, string address, string phone, string email)
         {
             businessCustomers.Add(new Business(name, serialno, address, phone, email));
         }
@@ -78,7 +78,7 @@ namespace Domain
         #endregion
 
         #region Vehicle methods
-        public void RegisterCar(String carType, String model, String color, Double salesPrice, Double rentPrice)
+        public void RegisterCar(string carType, string model, string color, double salesPrice, double rentPrice)
         {
             if (carType == "car")
             {
@@ -117,7 +117,7 @@ namespace Domain
         }
         #endregion
 
-        #region Leasiong methods
+        #region Leasing methods
         public void LeasePrivate(Vehicles vehicle, Private customer, int rentPeriod)
         {
             leasingContracts.Add(new Leasing(vehicle, customer, rentPeriod));

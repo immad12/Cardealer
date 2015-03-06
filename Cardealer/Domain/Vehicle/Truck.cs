@@ -7,7 +7,7 @@ namespace Domain.Vehicle
 {
     public class Truck : Vehicles
     {
-        public Truck(String model, String color, double salesPrice, double rentPrice)
+        public Truck(string model, string color, double salesPrice, double rentPrice)
             : base(model, color, salesPrice, rentPrice)
         { }
     }

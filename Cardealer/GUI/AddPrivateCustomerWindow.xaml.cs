@@ -27,11 +27,11 @@ namespace GUI
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            String name = txtName.Text;
-            String address = txtAddress.Text;
-            String phone = txtPhone.Text;
-            String birthday = txtBirthday.Text;
-            String genderType = (radioBtnMale.IsChecked == true) ? "male" : "female";
+            string name = txtName.Text;
+            string address = txtAddress.Text;
+            string phone = txtPhone.Text;
+            string birthday = txtBirthday.Text;
+            string genderType = (radioBtnMale.IsChecked == true) ? "male" : "female";
 
             if (btnSave.Content.ToString() == "Save" && txtName.SelectedText != null && txtAddress.SelectedText != null && txtBirthday != null && txtPhone != null && genderType.Length > 1)
             {

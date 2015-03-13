@@ -199,57 +199,60 @@ namespace GUI
             Vehicles vehicle = null;
             Private privatCustomer = null;
             Business businessCustomer = null;
-            int rentPeriod = int.Parse(txtRentPeriod.Text);
-
-            #region Instantiate Vehicle and customer
-            foreach (Private privateCust in Cardealer.Instance.GetListOfPrivateCustomers())
-            {
-                if (privateCust.Name == comboBoxCustomer.SelectedItem.ToString())
-                {
-                    privatCustomer = privateCust;
-                }
-            }
-            foreach (Business businessCust in Cardealer.Instance.GetListOfBusinessCustomers())
-            {
-                if (businessCust.CompanyName == comboBoxCustomer.SelectedItem.ToString())
-                {
-                    businessCustomer = businessCust;
-                }
-            }
-
-            foreach (Car car in Cardealer.Instance.GetListOfCars())
-            {
-                if (car.Model == comboBoxVehicle.SelectedItem.ToString())
-                {
-                    vehicle = (Vehicles)car;
-                }
-            }
-            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
-            {
-                if (truck.Model == comboBoxVehicle.SelectedItem.ToString())
-                {
-                    vehicle = (Vehicles)truck;
-                }
-            }
-            #endregion
 
             if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtModel.Text)
-                && !string.IsNullOrWhiteSpace(txtRentPeriod.Text) && !string.IsNullOrWhiteSpace(txtTotalPrice.Text))
+              && !string.IsNullOrWhiteSpace(txtRentPeriod.Text) && !string.IsNullOrWhiteSpace(txtTotalPrice.Text))
             {
+                #region Instantiate Vehicle and customer
+                foreach (Private privateCust in Cardealer.Instance.GetListOfPrivateCustomers())
+                {
+                    if (privateCust.Name == comboBoxCustomer.SelectedItem.ToString())
+                    {
+                        privatCustomer = privateCust;
+                    }
+                }
+                foreach (Business businessCust in Cardealer.Instance.GetListOfBusinessCustomers())
+                {
+                    if (businessCust.CompanyName == comboBoxCustomer.SelectedItem.ToString())
+                    {
+                        businessCustomer = businessCust;
+                    }
+                }
+
+                foreach (Car car in Cardealer.Instance.GetListOfCars())
+                {
+                    if (car.Model == comboBoxVehicle.SelectedItem.ToString())
+                    {
+                        vehicle = (Vehicles)car;
+                    }
+                }
+                foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+                {
+                    if (truck.Model == comboBoxVehicle.SelectedItem.ToString())
+                    {
+                        vehicle = (Vehicles)truck;
+                    }
+                }
+                #endregion
+
+                int rentPeriod = int.Parse(txtRentPeriod.Text);
+
                 if (vehicle != null && privatCustomer != null)
                 {
                     Cardealer.Instance.LeasePrivate(vehicle, privatCustomer, rentPeriod);
-                    MessageBox.Show("Leasing for: " + privatCustomer.Name + " and the vehicle " + vehicle.Model
-                        + Environment.NewLine
-                         + "Rent period of " + rentPeriod + " months for " + txtTotalPrice.Text + " DKK");
+                    MessageBox.Show("Leasing for:\t" + privatCustomer.Name + " and the vehicle " + vehicle.Model
+                        + "\n\t\tRent period of " + rentPeriod + " months for " + txtTotalPrice.Text + " DKK");
                 }
                 if (vehicle != null && businessCustomer != null)
                 {
                     Cardealer.Instance.LeaseBusiness(vehicle, businessCustomer, rentPeriod);
-                    MessageBox.Show("Leasing for: " + businessCustomer.CompanyName + " and the vehicle "
-                         + vehicle.Model + Environment.NewLine
-                         + "Rent period of " + rentPeriod + " months for " + txtTotalPrice.Text + " DKK");
+                    MessageBox.Show("Leasing for:\t" + businessCustomer.CompanyName + " and the vehicle "
+                         + vehicle.Model + "\n\t\tRent period of " + rentPeriod + " months for " + txtTotalPrice.Text + " DKK");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Missing arguments");
             }
         }
 
@@ -258,9 +261,17 @@ namespace GUI
             if (!string.IsNullOrWhiteSpace(txtRentprice.Text) && !string.IsNullOrWhiteSpace(txtRentPeriod.Text))
             {
                 double rentPrice = Double.Parse(txtRentprice.Text);
-                int rentPeriod = int.Parse(txtRentPeriod.Text);
-                double total = Cardealer.Instance.GetTotalLeasingPrice(rentPrice, rentPeriod);
-                txtTotalPrice.Text = total + "";
+                int rentPeriod = -1;
+                try
+                {
+                    rentPeriod = int.Parse(txtRentPeriod.Text);
+                    double total = Cardealer.Instance.GetTotalLeasingPrice(rentPrice, rentPeriod);
+                    txtTotalPrice.Text = total + "";
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Rent period is not a number");
+                }
             }
             else
             {

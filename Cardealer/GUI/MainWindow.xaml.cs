@@ -37,8 +37,7 @@ namespace GUI
             CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
             TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
 
-
-            //Initialize all comboboxes
+           //Initialize all comboboxes
             InitComboboxes();
         }
 

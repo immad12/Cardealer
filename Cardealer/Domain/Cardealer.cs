@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Domain.Vehicle;
 using Domain.Contracts;
+using Domain.Filesystem;
 
 namespace Domain
 {
@@ -33,6 +34,8 @@ namespace Domain
         private List<Private> privateCustomers = new List<Private>();
         private List<Business> businessCustomers = new List<Business>();
         private List<Leasing> leasingContracts = new List<Leasing>();
+
+        private DirectoryWatcher files = new DirectoryWatcher();
 
         public Cardealer()
         {

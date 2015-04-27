@@ -34,10 +34,13 @@ namespace Domain
         private List<Business> businessCustomers = new List<Business>();
         private List<Leasing> leasingContracts = new List<Leasing>();
 
+        private DirectoryWatcher files = new DirectoryWatcher();
+
         public Cardealer()
         {
-            CreateVehicleData();
-            CreateCustomerData();
+            //CreateVehicleData();
+            //CreateCustomerData();
+            DirectoryWatcher watcher = new DirectoryWatcher();
         }
 
         #region Customer methods

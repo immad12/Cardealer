@@ -39,8 +39,9 @@ namespace Domain
 
         public Cardealer()
         {
-            CreateVehicleData();
-            CreateCustomerData();
+            //CreateVehicleData();
+            //CreateCustomerData();
+            DirectoryWatcher watcher = new DirectoryWatcher();
         }
 
         #region Customer methods

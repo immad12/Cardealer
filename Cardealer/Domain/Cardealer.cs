@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Domain.Vehicle;
 using Domain.Contracts;
-using MySql.Data.MySqlClient;
+using Foundation;
 
 namespace Domain
 {
@@ -37,12 +37,10 @@ namespace Domain
 
         private DirectoryWatcher files = new DirectoryWatcher();
 
-        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
-
         public Cardealer()
         {
-            //CreateVehicleData();
-            //CreateCustomerData();
+            LoadVehiclesFromDB();
+
             DirectoryWatcher watcher = new DirectoryWatcher();
             // -----------------------------------------------------------------------------
             var carType = from t in trucks
@@ -58,41 +56,20 @@ namespace Domain
             }
 
             // -----------------------------------------------------------------------------
-            MySqlConnection connection = new MySqlConnection(connString);
-            connection.Open();
 
-            try
-            {
-                MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "select * from privatecustomers";
-                MySqlDataReader reader = command.ExecuteReader();
-                while(reader.Read())
-                {
-                    privateCustomers.Add(new Private(reader[0] + "", reader[3] + "", reader[1] + "", reader[4] + "", reader[2] + ""));
-                }
-                
-            }
-
-            catch(Exception)
-            {
-                throw;
-            }
-
-            finally
-            {
-                connection.Close();
-            }
         }
 
         #region Customer methods
         public void RegisterPrivateCustomer(string name, string address, string birthday, string phone, string gender)
         {
-            privateCustomers.Add(new Private(name, address, birthday, phone, gender));
+            //privateCustomers.Add(new Private(name, address, birthday, phone, gender));
+            FCustomer.Instance.AddPrivateCustomer(name, birthday, gender, address, Convert.ToInt32(phone));
         }
 
         public void RegisterBusinessCustomer(string name, string serialno, string address, string phone, string email)
         {
-            businessCustomers.Add(new Business(name, serialno, address, phone, email));
+            //businessCustomers.Add(new Business(name, serialno, address, phone, email));
+            FCustomer.Instance.AddBusinessCustomer(name, Convert.ToInt32(serialno), address, Convert.ToInt32(phone), email);
         }
 
         public List<Private> GetListOfPrivateCustomers()
@@ -104,33 +81,20 @@ namespace Domain
         {
             return this.businessCustomers;
         }
-
-        public void CreateCustomerData()
-        {
-            // Create private customers to the cardealership - later this would be in the persistence layer
-            RegisterPrivateCustomer("Peter Jacobsen", "Solvænget 5", "24-03-1973", "23658923", "male");
-            RegisterPrivateCustomer("Søren Petersen", "Torps Alle 13", "17-10-1969", "89278400", "male");
-            RegisterPrivateCustomer("Marie Nielsen", "Heliosvænget 22", "01-05-1988", "89273929", "female");
-            RegisterPrivateCustomer("Jakob Mogensen", "Mågevej 12", "03-08-1983", "64021032", "male");
-            RegisterPrivateCustomer("Anne Sørensen", "Nørregade 9", "01-12-1975", "63862753", "female");
-
-            // Create business customers to the cardealership - later this would be in the persistence layer
-            RegisterBusinessCustomer("BioCover", "20235587", "Kalundborgvej 34", "75728319", "mts@Biocover.dk");
-            RegisterBusinessCustomer("Apricity Games", "10047934", "Brogade 2", "56372200", "games@apricity.com");
-            RegisterBusinessCustomer("Hair&Nails", "49500360", "Søndergade 17", "60219043", "beauty@hairandnails.com");
-        }
         #endregion
 
         #region Vehicle methods
-        public void RegisterCar(string carType, string model, string color, double salesPrice, double rentPrice)
+        public void RegisterCar(string carType, string model, string color, double salesPrice, double rentPrice, string status)
         {
             if (carType == "car")
             {
-                cars.Add(new Car(model, color, salesPrice, rentPrice));
+                //cars.Add(new Car(model, color, salesPrice, rentPrice));
+                FVehicle.Instance.AddCar(model, color, salesPrice, rentPrice, status);
             }
             else if (carType == "truck")
             {
-                trucks.Add(new Truck(model, color, salesPrice, rentPrice));
+                //trucks.Add(new Truck(model, color, salesPrice, rentPrice));
+                FVehicle.Instance.AddTruck(model, color, salesPrice, rentPrice, status);
             }
         }
 
@@ -144,20 +108,11 @@ namespace Domain
             return this.trucks;
         }
 
-        private void CreateVehicleData()
+        public void LoadVehiclesFromDB()
         {
-            // Create cars to the cardealership - later this would be in the persistence layer
-            RegisterCar("car", "Ford Fiesta", "Silver", 119960, 3250);
-            RegisterCar("car", "Ford Mondeo", "Dark blue", 297600, 5250);
-            RegisterCar("car", "Citroen C3", "Black", 139990, 3750);
-            RegisterCar("car", "Citroen Cactus", "Yellow", 169990, 4350);
+            string[] carsArr = FVehicle.Instance.LoadVehicles();
 
-            // Create trucks to the cardealership - later this would be in the persistence layer
-            RegisterCar("truck", "Iveco Daily", "White", 354300, 4015);
-            RegisterCar("truck", "Peugot Boxer", "White", 247250, 2550);
-            RegisterCar("truck", "Iveco Daily", "Silver", 325200, 2780);
-            RegisterCar("truck", "Volvo FE", "Blue", 623750, 5280);
-            RegisterCar("truck", "Volvo FM400", "Blue", 647255, 6725);
+            this.cars.Add(new Car(carsArr[0] + "", carsArr[1] + "", Convert.ToDouble(carsArr[2]), Convert.ToDouble(carsArr[3])));
         }
         #endregion
 

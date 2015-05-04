@@ -49,7 +49,7 @@ namespace GUI
 
             if (SaveCarButton.Content.ToString() == "Save" && CarModel.SelectedText != null && CarColor.SelectedText != null && salesPrice > 0 && rentPrice > 0)
             {
-                Cardealer.Instance.RegisterCar(type, model, carColor, salesPrice, rentPrice);
+                Cardealer.Instance.RegisterCar(type, model, carColor, salesPrice, rentPrice, "Commission");
                 this.Close();
             }
             if (SaveCarButton.Content.ToString() == "OK")

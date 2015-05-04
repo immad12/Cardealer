@@ -55,7 +55,7 @@ namespace Domain
                         string[] values = input.Split(';');
                        
                         double rentPrice = double.Parse(values[4]);
-                        Cardealer.Instance.RegisterCar(values[0], values[1], values[2], double.Parse(values[3]), double.Parse(values[4]));
+                        Cardealer.Instance.RegisterCar(values[0], values[1], values[2], double.Parse(values[3]), double.Parse(values[4]), values[5]);
                     }
                 }
             }

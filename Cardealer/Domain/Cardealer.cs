@@ -39,7 +39,7 @@ namespace Domain
         public Cardealer()
         {
             //CreateVehicleData();
-            //CreateCustomerData();
+            CreateCustomerData();
             DirectoryWatcher watcher = new DirectoryWatcher();
         }
 

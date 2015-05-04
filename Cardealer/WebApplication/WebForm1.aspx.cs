@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Domain;
 
 namespace WebApplication
 {
@@ -11,7 +12,15 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           //form1.Style[HtmlTextWriterStyle.BackgroundColor] = "lightblue";
+            // A simple example using Page_Load
+            List<Private> people = Cardealer.Instance.GetListOfPrivateCustomers();
+         
+            if (!IsPostBack)
+            {
+                repPeople.DataSource = people;
+                repPeople.DataBind();
+            }
         }
     }
 }

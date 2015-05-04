@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Domain.Vehicle;
 using Domain.Contracts;
+using MySql.Data.MySqlClient;
 
 namespace Domain
 {
@@ -34,10 +35,51 @@ namespace Domain
         private List<Business> businessCustomers = new List<Business>();
         private List<Leasing> leasingContracts = new List<Leasing>();
 
+        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
+
         public Cardealer()
         {
             CreateVehicleData();
-            CreateCustomerData();
+          //  CreateCustomerData();
+
+            // -----------------------------------------------------------------------------
+            var carType = from t in trucks
+                          where
+                              t.Color.Contains("Blue")
+                          select t.Model;
+
+            Console.WriteLine("-------------------------------------------------------");
+
+            foreach (var carColor in carType)
+            {
+                Console.WriteLine("Truck type: " + carColor);
+            }
+
+            // -----------------------------------------------------------------------------
+            MySqlConnection connection = new MySqlConnection(connString);
+            connection.Open();
+
+            try
+            {
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "select * from privatecustomers";
+                MySqlDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    privateCustomers.Add(new Private(reader[0] + "", reader[3] + "", reader[1] + "", reader[4] + "", reader[2] + ""));
+                }
+                
+            }
+
+            catch(Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                connection.Close();
+            }
         }
 
         #region Customer methods

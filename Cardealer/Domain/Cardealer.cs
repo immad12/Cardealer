@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Domain.Vehicle;
 using Domain.Contracts;
+using System.Collections.ObjectModel;
 
 namespace Domain
 {
@@ -28,11 +29,11 @@ namespace Domain
         }
         #endregion
 
-        private List<Car> cars = new List<Car>();
-        private List<Truck> trucks = new List<Truck>();
-        private List<Private> privateCustomers = new List<Private>();
-        private List<Business> businessCustomers = new List<Business>();
-        private List<Leasing> leasingContracts = new List<Leasing>();
+        private ObservableCollection<Car> cars = new ObservableCollection<Car>();
+        private ObservableCollection<Truck> trucks = new ObservableCollection<Truck>();
+        private ObservableCollection<Private> privateCustomers = new ObservableCollection<Private>();
+        private ObservableCollection<Business> businessCustomers = new ObservableCollection<Business>();
+        private ObservableCollection<Leasing> leasingContracts = new ObservableCollection<Leasing>();
 
         public Cardealer()
         {
@@ -51,12 +52,12 @@ namespace Domain
             businessCustomers.Add(new Business(name, serialno, address, phone, email));
         }
 
-        public List<Private> GetListOfPrivateCustomers()
+        public ObservableCollection<Private> GetListOfPrivateCustomers()
         {
             return this.privateCustomers;
         }
 
-        public List<Business> GetListOfBusinessCustomers()
+        public ObservableCollection<Business> GetListOfBusinessCustomers()
         {
             return this.businessCustomers;
         }
@@ -90,12 +91,12 @@ namespace Domain
             }
         }
 
-        public List<Car> GetListOfCars()
+        public ObservableCollection<Car> GetListOfCars()
         {
             return this.cars;
         }
 
-        public List<Truck> GetListOfTrucks()
+        public ObservableCollection<Truck> GetListOfTrucks()
         {
             return this.trucks;
         }
@@ -128,7 +129,7 @@ namespace Domain
             leasingContracts.Add(new Leasing(vehicle, customer, rentPeriod));
         }
 
-        public List<Leasing> getLeasingContrats()
+        public ObservableCollection<Leasing> getLeasingContrats()
         {
             return leasingContracts;
         }

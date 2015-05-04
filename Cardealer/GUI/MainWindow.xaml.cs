@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Domain;
 using Domain.Vehicle;
+using System.Collections.ObjectModel;
 
 namespace GUI
 {
@@ -22,10 +23,8 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        /* private Car selectedCar;
-         private Truck selectedTruck;
-         private Private selectedPrivate;
-         private Business selectedBusiness; */
+        private ObservableCollection<Car> updatedCars = new ObservableCollection<Car>();
+        private ObservableCollection<Truck> updatedTrucks = new ObservableCollection<Truck>();
 
         public MainWindow()
         {
@@ -37,6 +36,15 @@ namespace GUI
             CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
             TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
 
+            foreach (Car c in Cardealer.Instance.GetListOfCars())
+            {
+                updatedCars.Add(c);
+            }
+
+            foreach (Truck t in Cardealer.Instance.GetListOfTrucks())
+            {
+                updatedTrucks.Add(t);
+            }
 
             //Initialize all comboboxes
             InitComboboxes();
@@ -55,18 +63,23 @@ namespace GUI
             {
                 comboBoxCustomer.Items.Add(businessCustomer.CompanyName);
             }
+            comboBoxCustomer.SelectedIndex = 0;
 
             //Vehicle combobox
             comboBoxVehicle.Items.Add("---- Cars ----");
+            //foreach (Car car in Cardealer.Instance.GetListOfCars())
             foreach (Car car in Cardealer.Instance.GetListOfCars())
             {
-                comboBoxVehicle.Items.Add(car.Model);
+                if (car.CarState.Equals("Commision"))
+                    comboBoxVehicle.Items.Add(car.Model);
             }
             comboBoxVehicle.Items.Add("---- Trucks ----");
             foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
             {
-                comboBoxVehicle.Items.Add(truck.Model);
+                if (truck.CarState.Equals("Commision"))
+                    comboBoxVehicle.Items.Add(truck.Model);
             }
+            comboBoxVehicle.SelectedIndex = 0;
         }
 
         #region Eventhandlers for Customers
@@ -240,6 +253,10 @@ namespace GUI
                 if (vehicle != null && privatCustomer != null)
                 {
                     Cardealer.Instance.LeasePrivate(vehicle, privatCustomer, rentPeriod);
+
+                    updatedCars.CollectionChanged += leased_CollectionChanged;
+                    updatedTrucks.CollectionChanged += leased_CollectionChanged;
+
                     MessageBox.Show("Leasing for:\t" + privatCustomer.Name + " and the vehicle " + vehicle.Model
                         + "\n\t\tRent period of " + rentPeriod + " months for " + txtTotalPrice.Text + " DKK");
                 }
@@ -252,8 +269,19 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Missing arguments");
+                MessageBox.Show("Missing input values");
             }
+
+            //Clear all fields in the GUI
+            comboBoxCustomer.SelectedIndex = 0;
+            comboBoxVehicle.SelectedIndex = 0;
+            txtName.Text = "";
+            txtAddress.Text = "";
+            txtModel.Text = "";
+            txtColor.Text = "";
+            txtRentprice.Text = "";
+            txtRentPeriod.Text = "";
+            txtTotalPrice.Text = "";
         }
 
         private void btnCalculateLeasing_Click(object sender, RoutedEventArgs e)
@@ -322,6 +350,33 @@ namespace GUI
                     txtModel.Text = truck.Model;
                     txtColor.Text = truck.Color;
                     txtRentprice.Text = truck.RentPrice + "";
+                }
+            }
+        }
+        #endregion
+
+        #region CollectionChanged event handler
+        static void leased_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            // They removed something. 
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            {
+                Console.WriteLine("Here are the OLD items:");
+                foreach (Vehicles v in e.OldItems)
+                {
+                    Console.WriteLine(v.ToString());
+                }
+                Console.WriteLine();
+            }
+
+            // They added something. 
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                // Now show the NEW items that were inserted.
+                Console.WriteLine("Here are the NEW items:");
+                foreach (Vehicles v in e.NewItems)
+                {
+                    Console.WriteLine(v.ToString());
                 }
             }
         }

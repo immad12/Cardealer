@@ -35,6 +35,7 @@ namespace Domain
         private List<Business> businessCustomers = new List<Business>();
         private List<Leasing> leasingContracts = new List<Leasing>();
 
+<<<<<<< HEAD
         private DirectoryWatcher files = new DirectoryWatcher();
 
         public Cardealer()
@@ -42,6 +43,14 @@ namespace Domain
             //CreateVehicleData();
             //CreateCustomerData();
             DirectoryWatcher watcher = new DirectoryWatcher();
+=======
+        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
+
+        public Cardealer()
+        {
+            CreateVehicleData();
+          //  CreateCustomerData();
+
             // -----------------------------------------------------------------------------
             var carType = from t in trucks
                           where
@@ -80,6 +89,7 @@ namespace Domain
             {
                 connection.Close();
             }
+>>>>>>> LINQ
         }
 
         #region Customer methods

@@ -37,6 +37,8 @@ namespace Domain
 
         private DirectoryWatcher files = new DirectoryWatcher();
 
+        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
+
         public Cardealer()
         {
             //CreateVehicleData();

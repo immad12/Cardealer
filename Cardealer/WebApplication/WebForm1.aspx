@@ -26,7 +26,7 @@
                     <tr><td>Phone:</td><td><asp:Label ID="txtPhone" runat="server" Text='<%# Eval("Phone") %>' /></td></tr>
                     <tr><td>Gender:</td><td><asp:Label ID="txtGender" runat="server" Text='<%# Eval("Gender") %>' /></td></tr>
                     <hr />
-                </table>                
+                </table>
          </ItemTemplate>
         </asp:Repeater>
     </form>

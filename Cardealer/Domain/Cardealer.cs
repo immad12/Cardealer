@@ -5,6 +5,7 @@ using System.Text;
 using Domain.Vehicle;
 using Domain.Contracts;
 using Foundation;
+using System.Collections.ObjectModel;
 
 namespace Domain
 {
@@ -29,17 +30,52 @@ namespace Domain
         }
         #endregion
 
-        private List<Car> cars = new List<Car>();
-        private List<Truck> trucks = new List<Truck>();
-        private List<Private> privateCustomers = new List<Private>();
-        private List<Business> businessCustomers = new List<Business>();
-        private List<Leasing> leasingContracts = new List<Leasing>();
+        private ObservableCollection<Car> cars = new ObservableCollection<Car>();
+
+        public ObservableCollection<Car> Cars
+        {
+            get { return cars; }
+            set { cars = value; }
+        }
+
+        private ObservableCollection<Truck> trucks = new ObservableCollection<Truck>();
+
+        public ObservableCollection<Truck> Trucks
+        {
+            get { return trucks; }
+            set { trucks = value; }
+        }
+
+        private ObservableCollection<Private> privateCustomers = new ObservableCollection<Private>();
+
+        public ObservableCollection<Private> PrivateCustomers
+        {
+            get { return privateCustomers; }
+            set { privateCustomers = value; }
+        }
+
+        private ObservableCollection<Business> businessCustomers = new ObservableCollection<Business>();
+
+        public ObservableCollection<Business> BusinessCustomers
+        {
+            get { return businessCustomers; }
+            set { businessCustomers = value; }
+        }
+
+        private ObservableCollection<Leasing> leasingContracts = new ObservableCollection<Leasing>();
+
+        public ObservableCollection<Leasing> LeasingContracts
+        {
+            get { return leasingContracts; }
+            set { leasingContracts = value; }
+        }
 
         private DirectoryWatcher files = new DirectoryWatcher();
 
         public Cardealer()
         {
             LoadVehiclesFromDB();
+            LoadCustomersFromDB();
 
             DirectoryWatcher watcher = new DirectoryWatcher();
             // -----------------------------------------------------------------------------
@@ -72,14 +108,30 @@ namespace Domain
             FCustomer.Instance.AddBusinessCustomer(name, Convert.ToInt32(serialno), address, Convert.ToInt32(phone), email);
         }
 
-        public List<Private> GetListOfPrivateCustomers()
+        public void LoadCustomersFromDB()
         {
-            return this.privateCustomers;
-        }
+            privateCustomers.Clear();
+            businessCustomers.Clear();
 
-        public List<Business> GetListOfBusinessCustomers()
+            List<string[]> privateArr = FCustomer.Instance.LoadPrivateCustomers();
+            List<string[]> businessArr = FCustomer.Instance.LoadBusinessCustomers();
+
+            // Pasting private customers into list
+            foreach (string[] pCustomers in privateArr)
+            {
+                privateCustomers.Add(new Private(pCustomers[0], pCustomers[1], pCustomers[2], pCustomers[3], pCustomers[4]));
+            }
+
+            // Pasting business customers into list
+            foreach (string[] bCustomers in businessArr)
+            {
+                businessCustomers.Add(new Business(bCustomers[0], bCustomers[1], bCustomers[2], bCustomers[3], bCustomers[4]));
+            }
+        }
+        
+        public void UpdateCustomers()
         {
-            return this.businessCustomers;
+
         }
         #endregion
 
@@ -98,22 +150,27 @@ namespace Domain
             }
         }
 
-        public List<Car> GetListOfCars()
-        {
-            return this.cars;
-        }
-
-        public List<Truck> GetListOfTrucks()
-        {
-            return this.trucks;
-        }
-
         public void LoadVehiclesFromDB()
         {
-            string[] carsArr = FVehicle.Instance.LoadVehicles();
+            trucks.Clear();
+            cars.Clear();
 
-            this.cars.Add(new Car(carsArr[0] + "", carsArr[1] + "", Convert.ToDouble(carsArr[2]), Convert.ToDouble(carsArr[3])));
+            List<string[]> carsArr = FVehicle.Instance.LoadCars();
+            List<string[]> truckArr = FVehicle.Instance.LoadTrucks();
+
+            // Pasting cars into list
+            foreach (string[] car in carsArr)
+            {
+                cars.Add(new Car(car[0], car[1], Convert.ToDouble(car[2]), Convert.ToDouble(car[3])));
+            }
+
+            // Pasting trucks into list
+            foreach (string[] truck in truckArr)
+            {
+                trucks.Add(new Truck(truck[0], truck[1], Convert.ToDouble(truck[2]), Convert.ToDouble(truck[3])));
+            }
         }
+
         #endregion
 
         #region Leasing methods
@@ -125,11 +182,6 @@ namespace Domain
         public void LeaseBusiness(Vehicles vehicle, Business customer, int rentPeriod)
         {
             leasingContracts.Add(new Leasing(vehicle, customer, rentPeriod));
-        }
-
-        public List<Leasing> getLeasingContrats()
-        {
-            return leasingContracts;
         }
 
         public double GetTotalLeasingPrice(double price, int period)

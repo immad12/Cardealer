@@ -79,9 +79,11 @@ namespace Foundation
             }
         }
 
-        public string[] LoadVehicles()
+        public List<string[]> LoadCars()
         {
             OpenConnection();
+
+            List<string[]> carList = new List<string[]>();
 
             try
             {
@@ -98,20 +100,51 @@ namespace Foundation
                     cars[2] = reader[2] + "";
                     cars[3] = reader[3] + "";
                     cars[4] = reader[4] + "";
-                   // carList.Add(reader[0] + "", reader[3] + "", reader[1] + "", reader[4] + "", reader[2] + "";
-
-                    for (int i = 0; i < 5; i++ )
-                        Console.WriteLine(cars[i]);
-
-                    yield return cars;
+                    
+                    carList.Add(cars);
                 }
-
             }
 
             finally
             {
                 connection.Close();
             }
+
+            return carList;
+        }
+
+        public List<string[]> LoadTrucks()
+        {
+            OpenConnection();
+
+            List<string[]> truckList = new List<string[]>();
+
+            try
+            {
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "select * from trucks";
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string[] trucks = new string[5];
+
+                    trucks[0] = reader[0] + "";
+                    trucks[1] = reader[1] + "";
+                    trucks[2] = reader[2] + "";
+                    trucks[3] = reader[3] + "";
+                    trucks[4] = reader[4] + "";
+
+                    truckList.Add(trucks);
+                }
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return truckList;
         }
     }
 }

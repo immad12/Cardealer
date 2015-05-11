@@ -76,5 +76,73 @@ namespace Foundation
                 connection.Close();
             }
         }
+
+        public List<string[]> LoadPrivateCustomers()
+        {
+            OpenConnection();
+
+            List<string[]> privateList = new List<string[]>();
+
+            try
+            {
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "select * from privatecustomers";
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string[] privateArr = new string[5];
+
+                    privateArr[0] = reader[0] + "";
+                    privateArr[1] = reader[3] + "";
+                    privateArr[2] = reader[1] + "";
+                    privateArr[3] = reader[4] + "";
+                    privateArr[4] = reader[2] + "";
+
+                    privateList.Add(privateArr);
+                }
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return privateList;
+        }
+
+        public List<string[]> LoadBusinessCustomers()
+        {
+            OpenConnection();
+
+            List<string[]> businessList = new List<string[]>();
+
+            try
+            {
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = "select * from businesscustomers";
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string[] businessArr = new string[5];
+
+                    businessArr[0] = reader[0] + "";
+                    businessArr[1] = reader[1] + "";
+                    businessArr[2] = reader[3] + "";
+                    businessArr[3] = reader[4] + "";
+                    businessArr[4] = reader[2] + "";
+
+                    businessList.Add(businessArr);
+                }
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return businessList;
+        }
     }
 }

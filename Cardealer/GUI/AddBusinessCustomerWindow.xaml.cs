@@ -46,6 +46,7 @@ namespace GUI
                 && txtSerialNo.SelectedText != null && txtPhone.SelectedText != null && txtEmail.SelectedText != null)
             {
                 Cardealer.Instance.RegisterBusinessCustomer(name, serialno, address, phone, email);
+                Cardealer.Instance.LoadCustomersFromDB();
                 this.Close();
             }
             else if (btnSave.Content.ToString() == "OK")

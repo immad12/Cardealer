@@ -32,10 +32,11 @@ namespace GUI
             InitializeComponent();
 
             //Initialize data for the grids
-            CarDataGrid.ItemsSource = Cardealer.Instance.GetListOfCars();
-            TruckDataGrid.ItemsSource = Cardealer.Instance.GetListOfTrucks();
-            PrivateDataGrid.ItemsSource = Cardealer.Instance.GetListOfPrivateCustomers();
-            BusinessDataGrid.ItemsSource = Cardealer.Instance.GetListOfBusinessCustomers();
+            CarDataGrid.ItemsSource = Cardealer.Instance.Cars;
+            TruckDataGrid.ItemsSource = Cardealer.Instance.Trucks;
+            PrivateDataGrid.ItemsSource = Cardealer.Instance.PrivateCustomers;
+            BusinessDataGrid.ItemsSource = Cardealer.Instance.BusinessCustomers;
+
            //Initialize all comboboxes
             InitComboboxes();
         }
@@ -44,24 +45,25 @@ namespace GUI
         {
             //Customer combobox
             comboBoxCustomer.Items.Add("---- Private ----");
-            foreach (Private privateCustomer in Cardealer.Instance.GetListOfPrivateCustomers())
+            foreach (Private privateCustomer in Cardealer.Instance.PrivateCustomers)
             {
                 comboBoxCustomer.Items.Add(privateCustomer.Name);
             }
             comboBoxCustomer.Items.Add("---- Business ----");
-            foreach (Business businessCustomer in Cardealer.Instance.GetListOfBusinessCustomers())
+            foreach (Business businessCustomer in Cardealer.Instance.BusinessCustomers)
             {
                 comboBoxCustomer.Items.Add(businessCustomer.CompanyName);
             }
 
             //Vehicle combobox
             comboBoxVehicle.Items.Add("---- Cars ----");
-            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            foreach (Car car in Cardealer.Instance.Cars)
             {
                 comboBoxVehicle.Items.Add(car.Model);
             }
+
             comboBoxVehicle.Items.Add("---- Trucks ----");
-            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            foreach (Truck truck in Cardealer.Instance.Trucks)
             {
                 comboBoxVehicle.Items.Add(truck.Model);
             }
@@ -83,8 +85,9 @@ namespace GUI
         //Update the datagrids for private and business customers
         private void UpdateCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            PrivateDataGrid.Items.Refresh();
-            BusinessDataGrid.Items.Refresh();
+            //PrivateDataGrid.Items.Refresh();
+            //BusinessDataGrid.Items.Refresh();
+            Cardealer.Instance.UpdateCustomers();
         }
 
         private void PrivateDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -202,14 +205,14 @@ namespace GUI
               && !string.IsNullOrWhiteSpace(txtRentPeriod.Text) && !string.IsNullOrWhiteSpace(txtTotalPrice.Text))
             {
                 #region Instantiate Vehicle and customer
-                foreach (Private privateCust in Cardealer.Instance.GetListOfPrivateCustomers())
+                foreach (Private privateCust in Cardealer.Instance.PrivateCustomers)
                 {
                     if (privateCust.Name == comboBoxCustomer.SelectedItem.ToString())
                     {
                         privatCustomer = privateCust;
                     }
                 }
-                foreach (Business businessCust in Cardealer.Instance.GetListOfBusinessCustomers())
+                foreach (Business businessCust in Cardealer.Instance.BusinessCustomers)
                 {
                     if (businessCust.CompanyName == comboBoxCustomer.SelectedItem.ToString())
                     {
@@ -217,14 +220,14 @@ namespace GUI
                     }
                 }
 
-                foreach (Car car in Cardealer.Instance.GetListOfCars())
+                foreach (Car car in Cardealer.Instance.Cars)
                 {
                     if (car.Model == comboBoxVehicle.SelectedItem.ToString())
                     {
                         vehicle = (Vehicles)car;
                     }
                 }
-                foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+                foreach (Truck truck in Cardealer.Instance.Trucks)
                 {
                     if (truck.Model == comboBoxVehicle.SelectedItem.ToString())
                     {
@@ -282,7 +285,7 @@ namespace GUI
 
         private void comboBoxCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (Private privateCustomer in Cardealer.Instance.GetListOfPrivateCustomers())
+            foreach (Private privateCustomer in Cardealer.Instance.PrivateCustomers)
             {
                 if (privateCustomer.Name == comboBoxCustomer.SelectedItem.ToString())
                 {
@@ -291,7 +294,7 @@ namespace GUI
                 }
             }
 
-            foreach (Business businessCustomer in Cardealer.Instance.GetListOfBusinessCustomers())
+            foreach (Business businessCustomer in Cardealer.Instance.BusinessCustomers)
             {
                 if (businessCustomer.CompanyName == comboBoxCustomer.SelectedItem.ToString())
                 {
@@ -303,7 +306,7 @@ namespace GUI
 
         private void comboBoxVehicle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            foreach (Car car in Cardealer.Instance.Cars)
             {
                 if (car.Model == comboBoxVehicle.SelectedItem.ToString())
                 {
@@ -313,7 +316,7 @@ namespace GUI
                 }
             }
 
-            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            foreach (Truck truck in Cardealer.Instance.Trucks)
             {
                 if (truck.Model == comboBoxVehicle.SelectedItem.ToString())
                 {
@@ -329,7 +332,7 @@ namespace GUI
             // Cars
             comboChooseCar.Items.Add("---- Cars ----");
 
-            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            foreach (Car car in Cardealer.Instance.Cars)
             {
                 comboChooseCar.Items.Add(car.Model);
             }
@@ -337,7 +340,7 @@ namespace GUI
             // Trucks
             comboChooseCar.Items.Add("---- Trucks ----");
 
-            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            foreach (Truck truck in Cardealer.Instance.Trucks)
             {
                 comboChooseCar.Items.Add(truck.Model);
             }
@@ -347,7 +350,7 @@ namespace GUI
         {
             comboChooseCustomer.Items.Add("---- Customers ----");
 
-            foreach (Private privateCustomer in Cardealer.Instance.GetListOfPrivateCustomers())
+            foreach (Private privateCustomer in Cardealer.Instance.PrivateCustomers)
             {
                 comboChooseCustomer.Items.Add(privateCustomer.Name);
             }
@@ -357,15 +360,15 @@ namespace GUI
         private void comboChooseCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-           foreach(Car car in Cardealer.Instance.GetListOfCars())
-           {
-               if (car.Model == comboChooseCar.SelectedItem)
-               {
-                   lblModel.Content = car.Model;
-                   lblPrice.Content = car.SalesPrice;
-                   lblColor.Content = car.Color;
-               }
-           }
+            foreach (Car car in Cardealer.Instance.Cars)
+            {
+                if (car.Model == comboChooseCar.SelectedItem)
+                {
+                    lblModel.Content = car.Model;
+                    lblPrice.Content = car.SalesPrice;
+                    lblColor.Content = car.Color;
+                }
+            }
         }
 
         private void ComboChooseCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)

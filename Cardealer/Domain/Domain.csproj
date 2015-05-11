@@ -57,12 +57,11 @@
     <Compile Include="Vehicle\Truck.cs" />
     <Compile Include="Vehicle\Vehicle.cs" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup />
     <ProjectReference Include="..\Foundation\Foundation.csproj">
       <Project>{73bdb1b2-929d-475c-8123-8456e139cfa2}</Project>
       <Name>Foundation</Name>
     </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

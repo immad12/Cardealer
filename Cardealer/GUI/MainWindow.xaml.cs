@@ -37,6 +37,7 @@ namespace GUI
             CarDataGrid.ItemsSource = Cardealer.Instance.Cars;
             TruckDataGrid.ItemsSource = Cardealer.Instance.Trucks;
 
+
            //Initialize all comboboxes
             InitComboboxes();
         }
@@ -326,6 +327,74 @@ namespace GUI
                 }
             }
         }
+
+        private void initChooseCarComboBox()
+        {
+            // Cars
+            comboChooseCar.Items.Add("---- Cars ----");
+
+            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            {
+                comboChooseCar.Items.Add(car.Model);
+            }
+
+            // Trucks
+            comboChooseCar.Items.Add("---- Trucks ----");
+
+            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            {
+                comboChooseCar.Items.Add(truck.Model);
+            }
+        }
+
+        private void initChooseACustomerComboBox()
+        {
+            comboChooseCustomer.Items.Add("---- Customers ----");
+
+            foreach (Private privateCustomer in Cardealer.Instance.GetListOfPrivateCustomers())
+            {
+                comboChooseCustomer.Items.Add(privateCustomer.Name);
+            }
+        }
+
+        // Clicking on a car in the combobox
+        private void comboChooseCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+           foreach(Car car in Cardealer.Instance.GetListOfCars())
+           {
+               if (car.Model == comboChooseCar.SelectedItem)
+               {
+                   lblModel.Content = car.Model;
+                   lblPrice.Content = car.SalesPrice;
+                   lblColor.Content = car.Color;
+               }
+           }
+        }
+
+        private void ComboChooseCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lblSelectedCustomer.Content = comboChooseCustomer.SelectedItem;
+        }
+
+        private void ComboChooseCarLoadded(object sender, RoutedEventArgs e)
+        {
+            comboChooseCar.Items.Clear();
+            initChooseCarComboBox();
+        }
+
+        private void btnBuy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void comboChooseACustomerLoaded(object sender, RoutedEventArgs e)
+        {
+            comboChooseCustomer.Items.Clear();
+            initChooseACustomerComboBox();
+        }
+
         #endregion
+
     }
 }

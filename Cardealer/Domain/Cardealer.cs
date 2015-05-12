@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Domain.Vehicle;
 using Domain.Contracts;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Domain
 {
@@ -28,17 +30,59 @@ namespace Domain
         }
         #endregion
 
-        private List<Car> cars = new List<Car>();
-        private List<Truck> trucks = new List<Truck>();
-        private List<Private> privateCustomers = new List<Private>();
-        private List<Business> businessCustomers = new List<Business>();
-        private List<Leasing> leasingContracts = new List<Leasing>();
+        #region Observable lists
+        private ObservableCollection<Car> cars = new ObservableCollection<Car>();
+
+        public ObservableCollection<Car> Cars
+        {
+            get { return cars; }
+            set { cars = value; }
+        }
+
+        private ObservableCollection<Truck> trucks = new ObservableCollection<Truck>();
+
+        public ObservableCollection<Truck> Trucks
+        {
+            get { return trucks; }
+            set { trucks = value; }
+        }
+
+        private ObservableCollection<Private> privateCustomers = new ObservableCollection<Private>();
+        public ObservableCollection<Private> PrivateCustomers
+        {
+            get { return privateCustomers; }
+            set { privateCustomers = value; }
+        }
+
+        private ObservableCollection<Business> businessCustomers = new ObservableCollection<Business>();
+        public ObservableCollection<Business> BusinessCustomers
+        {
+            get { return businessCustomers; }
+            set { businessCustomers = value; }
+        }
+
+        private ObservableCollection<Leasing> leasingContracts = new ObservableCollection<Leasing>();
+
+        public ObservableCollection<Leasing> LeasingContracts
+        {
+            get { return leasingContracts; }
+            set { leasingContracts = value; }
+        }
+
+        private ObservableCollection<Sale> salesContracts = new ObservableCollection<Sale>();
+
+        public ObservableCollection<Sale> SalesContracts
+        {
+            get { return salesContracts; }
+            set { salesContracts = value; }
+        }
+        #endregion
 
         private DirectoryWatcher files = new DirectoryWatcher();
 
         public Cardealer()
         {
-            //CreateVehicleData();
+            CreateVehicleData();
             CreateCustomerData();
             DirectoryWatcher watcher = new DirectoryWatcher();
         }
@@ -52,16 +96,6 @@ namespace Domain
         public void RegisterBusinessCustomer(string name, string serialno, string address, string phone, string email)
         {
             businessCustomers.Add(new Business(name, serialno, address, phone, email));
-        }
-
-        public List<Private> GetListOfPrivateCustomers()
-        {
-            return this.privateCustomers;
-        }
-
-        public List<Business> GetListOfBusinessCustomers()
-        {
-            return this.businessCustomers;
         }
 
         public void CreateCustomerData()
@@ -85,22 +119,28 @@ namespace Domain
         {
             if (carType == "car")
             {
-                cars.Add(new Car(model, color, salesPrice, rentPrice));
+                //cars.Add(new Car(model, color, salesPrice, rentPrice));
+                Car c = new Car(model, color, salesPrice, rentPrice);
+                cars.Add(c);
+                
+                // Using delegate to fire event
+                c.RegisterNewVehicle(AnnounceNewCar);
+                c.Announcement();
             }
             else if (carType == "truck")
             {
-                trucks.Add(new Truck(model, color, salesPrice, rentPrice));
+                //trucks.Add(new Truck(model, color, salesPrice, rentPrice));
+                Truck t = new Truck(model, color, salesPrice, rentPrice);
+                trucks.Add(t);
+
+                t.RegisterNewVehicle(AnnounceNewCar);
+                t.Announcement();
             }
         }
 
-        public List<Car> GetListOfCars()
+        public void AnnounceNewCar(string msg)
         {
-            return this.cars;
-        }
-
-        public List<Truck> GetListOfTrucks()
-        {
-            return this.trucks;
+            Trace.WriteLine("*-------------* A new " + msg + " has been added to the system! *-------------*");
         }
 
         private void CreateVehicleData()
@@ -131,15 +171,22 @@ namespace Domain
             leasingContracts.Add(new Leasing(vehicle, customer, rentPeriod));
         }
 
-        public List<Leasing> getLeasingContrats()
-        {
-            return leasingContracts;
-        }
-
         public double GetTotalLeasingPrice(double price, int period)
         {
             double total = price * period;
             return total;
+        }
+        #endregion
+
+        #region Sales methods
+        public void PrivateSale(Vehicles vehicle, Private customer)
+        {
+            salesContracts.Add(new Sale(vehicle, customer));
+        }
+
+        public void BusinessSale(Vehicles vehicle, Business customer)
+        {
+            salesContracts.Add(new Sale(vehicle, customer));
         }
         #endregion
     }

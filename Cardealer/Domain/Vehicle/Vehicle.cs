@@ -21,5 +21,31 @@ namespace Domain.Vehicle
             this.RentPrice = rentPrice;
             CarState = "Commision";
         }
+
+        #region Delegate infrastructure
+        // Define a delegate type.
+        public delegate void NewVehicleHandler(string msgForCaller);
+        // Define a member variable of this delegate.
+        private NewVehicleHandler listOfHandlers;
+
+        // Add registration function for the caller.
+        public void RegisterNewVehicle(NewVehicleHandler methodToCall)
+        {
+            listOfHandlers += methodToCall;
+        }
+
+        public void UnRegisterNewVehicle(NewVehicleHandler methodToCall)
+        {
+            listOfHandlers -= methodToCall;
+        }
+
+        // Implement the method to invoke the delegate’s 
+        // invocation list under the correct circumstances.
+        public void Announcement()
+        {
+            if (listOfHandlers != null)
+                listOfHandlers(this.Color + " " + this.Model);
+        }
+        #endregion
     }
 }

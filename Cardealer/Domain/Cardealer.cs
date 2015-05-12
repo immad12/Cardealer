@@ -68,6 +68,14 @@ namespace Domain
             get { return leasingContracts; }
             set { leasingContracts = value; }
         }
+
+        private ObservableCollection<Sale> salesContracts = new ObservableCollection<Sale>();
+
+        public ObservableCollection<Sale> SalesContracts
+        {
+            get { return salesContracts; }
+            set { salesContracts = value; }
+        }
         #endregion
 
         private DirectoryWatcher files = new DirectoryWatcher();
@@ -167,6 +175,18 @@ namespace Domain
         {
             double total = price * period;
             return total;
+        }
+        #endregion
+
+        #region Sales methods
+        public void PrivateSale(Vehicles vehicle, Private customer)
+        {
+            salesContracts.Add(new Sale(vehicle, customer));
+        }
+
+        public void BusinessSale(Vehicles vehicle, Business customer)
+        {
+            salesContracts.Add(new Sale(vehicle, customer));
         }
         #endregion
     }

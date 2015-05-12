@@ -38,7 +38,7 @@ namespace GUI
             TruckDataGrid.ItemsSource = Cardealer.Instance.Trucks;
 
 
-           //Initialize all comboboxes
+            //Initialize all comboboxes
             InitComboboxes();
         }
 
@@ -333,48 +333,64 @@ namespace GUI
             // Cars
             comboChooseCar.Items.Add("---- Cars ----");
 
-            foreach (Car car in Cardealer.Instance.GetListOfCars())
+            foreach (Car car in Cardealer.Instance.Cars)
             {
                 comboChooseCar.Items.Add(car.Model);
             }
-
             // Trucks
             comboChooseCar.Items.Add("---- Trucks ----");
-
-            foreach (Truck truck in Cardealer.Instance.GetListOfTrucks())
+            foreach (Truck truck in Cardealer.Instance.Trucks)
             {
                 comboChooseCar.Items.Add(truck.Model);
             }
+            comboChooseCar.SelectedIndex = 0;
         }
 
         private void initChooseACustomerComboBox()
         {
-            comboChooseCustomer.Items.Add("---- Customers ----");
-
-            foreach (Private privateCustomer in Cardealer.Instance.GetListOfPrivateCustomers())
+            comboChooseCustomer.Items.Add("---- Private ----");
+            foreach (Private privateCustomer in Cardealer.Instance.PrivateCustomers)
             {
                 comboChooseCustomer.Items.Add(privateCustomer.Name);
             }
+
+            comboChooseCustomer.Items.Add("---- Business ----");
+            foreach (Business businessCustomer in Cardealer.Instance.BusinessCustomers)
+            {
+                comboChooseCustomer.Items.Add(businessCustomer.CompanyName);
+            }
+            comboChooseCustomer.SelectedIndex = 0;
         }
 
-        // Clicking on a car in the combobox
+        // Clicking on a Vehicle in the combobox
         private void comboChooseCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-           foreach(Car car in Cardealer.Instance.GetListOfCars())
-           {
-               if (car.Model == comboChooseCar.SelectedItem)
-               {
-                   lblModel.Content = car.Model;
-                   lblPrice.Content = car.SalesPrice;
-                   lblColor.Content = car.Color;
-               }
-           }
+            foreach (Car car in Cardealer.Instance.Cars)
+            {
+                if (car.Model == comboChooseCar.SelectedItem)
+                {
+                    lblModel.Content = car.Model;
+                    lblPrice.Content = car.SalesPrice;
+                    lblColor.Content = car.Color;
+                }
+            }
+            foreach (Truck truck in Cardealer.Instance.Trucks)
+            {
+                if (truck.Model == comboChooseCar.SelectedItem)
+                {
+                    lblModel.Content = truck.Model;
+                    lblPrice.Content = truck.SalesPrice;
+                    lblColor.Content = truck.Color;
+                }
+            }
         }
 
         private void ComboChooseCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lblSelectedCustomer.Content = comboChooseCustomer.SelectedItem;
+            if (comboChooseCustomer.SelectedIndex == 0)
+                lblSelectedCustomer.Content = "";
+            else
+                lblSelectedCustomer.Content = comboChooseCustomer.SelectedItem;
         }
 
         private void ComboChooseCarLoadded(object sender, RoutedEventArgs e)
@@ -385,7 +401,52 @@ namespace GUI
 
         private void btnBuy_Click(object sender, RoutedEventArgs e)
         {
+            Vehicles vehicle = null;
+            Private privatCustomer = null;
+            Business businessCustomer = null;
 
+            #region Instantiate Vehicle and customer
+            foreach (Private privateCust in Cardealer.Instance.PrivateCustomers)
+            {
+                if (privateCust.Name == comboChooseCustomer.SelectedItem.ToString())
+                {
+                    privatCustomer = privateCust;
+                }
+            }
+            foreach (Business businessCust in Cardealer.Instance.BusinessCustomers)
+            {
+                if (businessCust.CompanyName == comboChooseCustomer.SelectedItem.ToString())
+                {
+                    businessCustomer = businessCust;
+                }
+            }
+            foreach (Car car in Cardealer.Instance.Cars)
+            {
+                if (car.Model == comboChooseCar.SelectedItem.ToString())
+                {
+                    vehicle = (Vehicles)car;
+                }
+            }
+            foreach (Truck truck in Cardealer.Instance.Trucks)
+            {
+                if (truck.Model == comboChooseCar.SelectedItem.ToString())
+                {
+                    vehicle = (Vehicles)truck;
+                }
+            }
+            #endregion
+
+            if (vehicle != null && privatCustomer != null)
+            {
+                Cardealer.Instance.PrivateSale(vehicle, privatCustomer);
+                MessageBox.Show("Sale for:\t" + privatCustomer.Name + " and the vehicle " + vehicle.Model);
+            }
+            if (vehicle != null && businessCustomer != null)
+            {
+                Cardealer.Instance.BusinessSale(vehicle, businessCustomer);
+                MessageBox.Show("Sale for:\t" + businessCustomer.CompanyName + " and the vehicle "
+                     + vehicle.Model);
+            }
         }
 
         private void comboChooseACustomerLoaded(object sender, RoutedEventArgs e)
@@ -393,8 +454,6 @@ namespace GUI
             comboChooseCustomer.Items.Clear();
             initChooseACustomerComboBox();
         }
-
         #endregion
-
     }
 }

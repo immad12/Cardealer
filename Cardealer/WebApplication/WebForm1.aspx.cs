@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain;
+using System.Collections.ObjectModel;
 
 namespace WebApplication
 {
@@ -14,7 +15,7 @@ namespace WebApplication
         {
            //form1.Style[HtmlTextWriterStyle.BackgroundColor] = "lightblue";
             // A simple example using Page_Load
-            List<Private> people = Cardealer.Instance.GetListOfPrivateCustomers();
+            ObservableCollection<Private> people = Cardealer.Instance.PrivateCustomers;
          
             if (!IsPostBack)
             {

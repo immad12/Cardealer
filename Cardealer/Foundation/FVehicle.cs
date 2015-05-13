@@ -9,9 +9,7 @@ namespace Foundation
     public class FVehicle : DatabaseConnection
     {
         public FVehicle()
-        {
-
-        }
+        {}
 
         #region Singleton pattern
         private static FVehicle instance;
@@ -148,12 +146,3 @@ namespace Foundation
         }
     }
 }
-
-//MySqlCommand command = connection.CreateCommand();
-//                command.CommandText = "select * from privatecustomers";
-//                MySqlDataReader reader = command.ExecuteReader();
-//                while (reader.Read())
-//                {
-//                    return new Car(reader[0] + "", reader[3] + "", reader[1] + "", reader[4] + "", reader[2] + "");
-//                }
-

@@ -9,9 +9,7 @@ namespace Foundation
     public class FCustomer : DatabaseConnection
     {
         public FCustomer()
-        {
-            
-        }
+        {}
 
         #region Singleton pattern
         private static FCustomer instance;

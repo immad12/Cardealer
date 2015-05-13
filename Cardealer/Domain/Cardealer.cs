@@ -32,7 +32,6 @@ namespace Domain
 
         #region Observable lists
         private ObservableCollection<Car> cars = new ObservableCollection<Car>();
-
         public ObservableCollection<Car> Cars
         {
             get { return cars; }
@@ -40,7 +39,6 @@ namespace Domain
         }
 
         private ObservableCollection<Truck> trucks = new ObservableCollection<Truck>();
-
         public ObservableCollection<Truck> Trucks
         {
             get { return trucks; }
@@ -55,7 +53,6 @@ namespace Domain
         }
 
         private ObservableCollection<Business> businessCustomers = new ObservableCollection<Business>();
-
         public ObservableCollection<Business> BusinessCustomers
         {
             get { return businessCustomers; }
@@ -63,14 +60,12 @@ namespace Domain
         }
 
         private ObservableCollection<Leasing> leasingContracts = new ObservableCollection<Leasing>();
-
         public ObservableCollection<Leasing> LeasingContracts
         {
             get { return leasingContracts; }
             set { leasingContracts = value; }
         }
         private ObservableCollection<Sale> salesContracts = new ObservableCollection<Sale>();
-
         public ObservableCollection<Sale> SalesContracts
         {
             get { return salesContracts; }
@@ -147,9 +142,8 @@ namespace Domain
         {
             if (carType == "car")
             {
-                //cars.Add(new Car(model, color, salesPrice, rentPrice));
-                Car c = new Car(model, color, salesPrice, rentPrice);                
                 // Using delegate to fire event
+                Car c = new Car(model, color, salesPrice, rentPrice);                
                 c.RegisterNewVehicle(AnnounceNewCar);
                 c.Announcement();
 

@@ -134,6 +134,7 @@ namespace Domain
             {
                 businessCustomers.Add(new Business(bCustomers[0], bCustomers[1], bCustomers[2], bCustomers[3], bCustomers[4]));
             }
+        }
 
         public void UpdateCustomers()
         {
@@ -163,6 +164,11 @@ namespace Domain
                 t.RegisterNewVehicle(AnnounceNewCar);
                 t.Announcement();
             }
+        }
+
+        public void AnnounceNewCar(string msg)
+        {
+            Console.WriteLine("------------- A new " + msg + " has been added to the system! -------------");
         }
         
         public void LoadVehiclesFromDB()

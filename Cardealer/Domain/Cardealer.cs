@@ -30,6 +30,7 @@ namespace Domain
         }
         #endregion
 
+        #region Observable lists
         private ObservableCollection<Car> cars = new ObservableCollection<Car>();
 
         public ObservableCollection<Car> Cars
@@ -47,7 +48,6 @@ namespace Domain
         }
 
         private ObservableCollection<Private> privateCustomers = new ObservableCollection<Private>();
-
         public ObservableCollection<Private> PrivateCustomers
         {
             get { return privateCustomers; }
@@ -69,6 +69,14 @@ namespace Domain
             get { return leasingContracts; }
             set { leasingContracts = value; }
         }
+        private ObservableCollection<Sale> salesContracts = new ObservableCollection<Sale>();
+
+        public ObservableCollection<Sale> SalesContracts
+        {
+            get { return salesContracts; }
+            set { salesContracts = value; }
+        }
+        #endregion
 
         private DirectoryWatcher files = new DirectoryWatcher();
 
@@ -121,14 +129,12 @@ namespace Domain
             {
                 privateCustomers.Add(new Private(pCustomers[0], pCustomers[1], pCustomers[2], pCustomers[3], pCustomers[4]));
             }
-
             // Pasting business customers into list
             foreach (string[] bCustomers in businessArr)
             {
                 businessCustomers.Add(new Business(bCustomers[0], bCustomers[1], bCustomers[2], bCustomers[3], bCustomers[4]));
             }
-        }
-        
+
         public void UpdateCustomers()
         {
 
@@ -141,15 +147,24 @@ namespace Domain
             if (carType == "car")
             {
                 //cars.Add(new Car(model, color, salesPrice, rentPrice));
-                FVehicle.Instance.AddCar(model, color, salesPrice, rentPrice, status);
+                Car c = new Car(model, color, salesPrice, rentPrice);
+                cars.Add(c);
+                
+                // Using delegate to fire event
+                c.RegisterNewVehicle(AnnounceNewCar);
+                c.Announcement();
             }
             else if (carType == "truck")
             {
                 //trucks.Add(new Truck(model, color, salesPrice, rentPrice));
-                FVehicle.Instance.AddTruck(model, color, salesPrice, rentPrice, status);
+                Truck t = new Truck(model, color, salesPrice, rentPrice);
+                trucks.Add(t);
+
+                t.RegisterNewVehicle(AnnounceNewCar);
+                t.Announcement();
             }
         }
-
+        
         public void LoadVehiclesFromDB()
         {
             trucks.Clear();
@@ -188,6 +203,18 @@ namespace Domain
         {
             double total = price * period;
             return total;
+        }
+        #endregion
+
+        #region Sales methods
+        public void PrivateSale(Vehicles vehicle, Private customer)
+        {
+            salesContracts.Add(new Sale(vehicle, customer));
+        }
+
+        public void BusinessSale(Vehicles vehicle, Business customer)
+        {
+            salesContracts.Add(new Sale(vehicle, customer));
         }
         #endregion
     }

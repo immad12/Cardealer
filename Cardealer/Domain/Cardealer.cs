@@ -148,21 +148,21 @@ namespace Domain
             if (carType == "car")
             {
                 //cars.Add(new Car(model, color, salesPrice, rentPrice));
-                Car c = new Car(model, color, salesPrice, rentPrice);
-                cars.Add(c);
-                
+                Car c = new Car(model, color, salesPrice, rentPrice);                
                 // Using delegate to fire event
                 c.RegisterNewVehicle(AnnounceNewCar);
                 c.Announcement();
+
+                FVehicle.Instance.AddCar(model, color, salesPrice, rentPrice, status);
             }
             else if (carType == "truck")
             {
                 //trucks.Add(new Truck(model, color, salesPrice, rentPrice));
                 Truck t = new Truck(model, color, salesPrice, rentPrice);
-                trucks.Add(t);
-
                 t.RegisterNewVehicle(AnnounceNewCar);
                 t.Announcement();
+
+                FVehicle.Instance.AddTruck(model, color, salesPrice, rentPrice, status);
             }
         }
 

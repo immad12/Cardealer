@@ -9,8 +9,9 @@ namespace Foundation
 {
     public class DatabaseConnection
     {
-        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
-        
+        //private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
+        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=root;";
+
         protected MySqlConnection connection;       
 
         public DatabaseConnection()

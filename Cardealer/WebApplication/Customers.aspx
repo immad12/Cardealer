@@ -1,20 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication.WebForm1" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Customers.aspx.cs" Inherits="WebApplication.WebForm1" %>
+<asp:Content ID="customers" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Landmandens Cardealership</title>
+<head>
+    <title>Customer overview</title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1">
         <div>
-            <asp:Label ID="Label1" runat="server" Font-Size="XX-Large"
-                Text="Welcome to Landmanden&#39;s Cardealer Site!"></asp:Label>
+            <asp:Label ID="LabelCustomer" runat="server" Font-Size="XX-Large"
+                Text="Private Customers"></asp:Label>
             <br /><br />
         </div>
-        
-        <asp:Label runat="server" Font-Size="Large" Text="Private Customers:"></asp:Label>
         <br />
 
          <asp:Repeater ID="repPeople" runat="server">
@@ -32,3 +31,4 @@
     </form>
 </body>
 </html>
+    </asp:Content>

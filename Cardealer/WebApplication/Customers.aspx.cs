@@ -13,8 +13,6 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           //form1.Style[HtmlTextWriterStyle.BackgroundColor] = "lightblue";
-            // A simple example using Page_Load
             ObservableCollection<Private> people = Cardealer.Instance.PrivateCustomers;
          
             if (!IsPostBack)

@@ -10,7 +10,7 @@ namespace Foundation
     public class DatabaseConnection
     {
         //private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
-        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=root;";
+        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
 
         protected MySqlConnection connection;       
 

@@ -35,7 +35,7 @@ namespace Foundation
 
             try
             {
-                string command = "insert into cars values ('" +
+                string command = "insert into cardealer.cars values ('" +
                     model + "', '" + color + "', " + Convert.ToInt32(salesPrice) + ", " + 
                     Convert.ToInt32(rentPrice) + ", '" + status + "')";
 
@@ -60,7 +60,7 @@ namespace Foundation
 
             try
             {
-                string command = "insert into trucks values ('" +
+                string command = "insert into cardealer.trucks values ('" +
                     model + "', '" + color + "', " + Convert.ToInt32(salesPrice) + ", " +
                     Convert.ToInt32(rentPrice) + ", '" + status + "')";
 
@@ -88,7 +88,7 @@ namespace Foundation
             try
             {
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "select * from cars";
+                command.CommandText = "select * from cardealer.cars";
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -122,7 +122,7 @@ namespace Foundation
             try
             {
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "select * from trucks";
+                command.CommandText = "select * from cardealer.trucks";
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())

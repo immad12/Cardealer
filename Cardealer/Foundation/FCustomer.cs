@@ -35,7 +35,7 @@ namespace Foundation
 
             try
             {
-                string command = "insert into privatecustomers values ('" +
+                string command = "insert into cardealer.privatecustomers values ('" +
                     name + "', '" + birthdate + "', '" + char.ToUpper(gender[0]) + gender.Substring(1) + "', '" + address + "', '" + phone + "')";
 
                 MySqlCommand cmd = new MySqlCommand(command, connection);
@@ -59,7 +59,7 @@ namespace Foundation
 
             try
             {
-                string command = "insert into businesscustomers values ('" +
+                string command = "insert into cardealer.businesscustomers values ('" +
                     name + "', '" + serialno + "', '" + email + "', '" + address + "', '" + phone + "')";
 
                 MySqlCommand cmd = new MySqlCommand(command, connection);
@@ -86,7 +86,7 @@ namespace Foundation
             try
             {
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "select * from privatecustomers";
+                command.CommandText = "select * from cardealer.privatecustomers";
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -120,7 +120,7 @@ namespace Foundation
             try
             {
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "select * from businesscustomers";
+                command.CommandText = "select * from cardealer.businesscustomers";
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())

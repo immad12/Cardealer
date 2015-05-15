@@ -15,9 +15,7 @@ namespace Foundation
         protected MySqlConnection connection;       
 
         public DatabaseConnection()
-        {
-            
-        }
+        {}
 
         protected void OpenConnection()
         {

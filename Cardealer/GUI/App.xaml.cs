@@ -9,8 +9,10 @@ using System.Windows;
 namespace GUI
 {
     /// <summary>
+    /// Niels & Mette, Group 2
     /// Interaction logic for App.xaml
     /// </summary>
+    
     public partial class App : Application
     {
     }

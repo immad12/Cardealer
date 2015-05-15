@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vehicles.aspx.cs" Inherits="WebApplication.WebForm2" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vehicles.aspx.cs" Inherits="WebApplication.Vehicle" %>
 <asp:Content ID="vehicles" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!DOCTYPE html>

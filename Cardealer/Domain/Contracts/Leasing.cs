@@ -7,6 +7,11 @@ using Domain.Vehicle;
 
 namespace Domain.Contracts
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Entity object for leasing
+    /// </summary>
+    
     public class Leasing : Contract
     {
         public double MonthlyRent { get; set; }

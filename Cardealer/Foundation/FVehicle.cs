@@ -6,6 +6,11 @@ using MySql.Data.MySqlClient;
 
 namespace Foundation
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Handling database calls for vehicles
+    /// </summary>
+    
     public class FVehicle : DatabaseConnection
     {
         public FVehicle()

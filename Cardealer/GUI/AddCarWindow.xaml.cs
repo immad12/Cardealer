@@ -16,9 +16,10 @@ using Domain;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for AddCarWindow.xaml
+    /// Niels & Mette, Group 2
     /// Logic to create a new car or truck. The window is also used for viewing data about vehicles from datagrid
     /// </summary>
+    
     public partial class AddCarWindow : Window
     {
         public AddCarWindow()

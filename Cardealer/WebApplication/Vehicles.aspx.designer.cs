@@ -10,7 +10,7 @@
 namespace WebApplication {
     
     
-    public partial class WebForm2 {
+    public partial class Vehicle {
         
         /// <summary>
         /// LabelVehicle control.

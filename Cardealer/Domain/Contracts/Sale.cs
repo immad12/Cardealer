@@ -9,6 +9,11 @@ using Domain.Vehicle;
 
 namespace Domain.Contracts
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Entity object for sale
+    /// </summary>
+    
     public class Sale : Contract
     {
         //Sale: Information of car and customer and date

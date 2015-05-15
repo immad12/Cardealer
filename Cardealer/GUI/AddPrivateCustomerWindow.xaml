@@ -22,8 +22,8 @@
         <TextBox x:Name="txtBirthday" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="10,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <RadioButton x:Name="radioBtnMale" Content="Male" HorizontalAlignment="Left" Margin="45,91,0,0" VerticalAlignment="Top" GroupName="radioBtnGender" Grid.Column="1" Grid.Row="1"/>
         <RadioButton x:Name="radioBtnFemale" Content="Female" Grid.Column="2" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" GroupName="radioBtnGender" Grid.Row="1"/>
-        <Button x:Name="btnClear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Margin="45,156,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="btnClear_Click"/>
-        <Button x:Name="btnSave" Content="Save" Grid.Column="2" HorizontalAlignment="Left" Margin="55,156,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
+        <Button x:Name="btnClear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Margin="45,156,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="BtnClear_Click"/>
+        <Button x:Name="btnSave" Content="Save" Grid.Column="2" HorizontalAlignment="Left" Margin="55,156,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="BtnSave_Click"/>
 
     </Grid>
 </Window>

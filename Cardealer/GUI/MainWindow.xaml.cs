@@ -18,8 +18,10 @@ using Domain.Vehicle;
 namespace GUI
 {
     /// <summary>
+    /// Niels & Mette, Group 2
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
         /* private Car selectedCar;
@@ -197,7 +199,7 @@ namespace GUI
         #endregion
 
         #region Eventhandlers for Leasing
-        private void btnLease_Click(object sender, RoutedEventArgs e)
+        private void BtnLease_Click(object sender, RoutedEventArgs e)
         {
             Vehicles vehicle = null;
             Private privatCustomer = null;
@@ -259,7 +261,7 @@ namespace GUI
             }
         }
 
-        private void btnCalculateLeasing_Click(object sender, RoutedEventArgs e)
+        private void BtnCalculateLeasing_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtRentprice.Text) && !string.IsNullOrWhiteSpace(txtRentPeriod.Text))
             {
@@ -285,7 +287,7 @@ namespace GUI
             }
         }
 
-        private void comboBoxCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBoxCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (Private privateCustomer in Cardealer.Instance.PrivateCustomers)
             {
@@ -306,7 +308,7 @@ namespace GUI
             }
         }
 
-        private void comboBoxVehicle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBoxVehicle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (Car car in Cardealer.Instance.Cars)
             {
@@ -329,7 +331,7 @@ namespace GUI
             }
         }
 
-        private void initChooseCarComboBox()
+        private void InitChooseCarComboBox()
         {
             // Cars
             comboChooseCar.Items.Add("---- Cars ----");
@@ -347,7 +349,7 @@ namespace GUI
             comboChooseCar.SelectedIndex = 0;
         }
 
-        private void initChooseACustomerComboBox()
+        private void InitChooseACustomerComboBox()
         {
             comboChooseCustomer.Items.Add("---- Private ----");
             foreach (Private privateCustomer in Cardealer.Instance.PrivateCustomers)
@@ -364,7 +366,7 @@ namespace GUI
         }
 
         // Clicking on a Vehicle in the combobox
-        private void comboChooseCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboChooseCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (Car car in Cardealer.Instance.Cars)
             {
@@ -397,10 +399,10 @@ namespace GUI
         private void ComboChooseCarLoadded(object sender, RoutedEventArgs e)
         {
             comboChooseCar.Items.Clear();
-            initChooseCarComboBox();
+            InitChooseCarComboBox();
         }
 
-        private void btnBuy_Click(object sender, RoutedEventArgs e)
+        private void BtnBuy_Click(object sender, RoutedEventArgs e)
         {
             Vehicles vehicle = null;
             Private privatCustomer = null;
@@ -450,10 +452,10 @@ namespace GUI
             }
         }
 
-        private void comboChooseACustomerLoaded(object sender, RoutedEventArgs e)
+        private void ComboChooseACustomerLoaded(object sender, RoutedEventArgs e)
         {
             comboChooseCustomer.Items.Clear();
-            initChooseACustomerComboBox();
+            InitChooseACustomerComboBox();
         }
         #endregion
     }

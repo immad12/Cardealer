@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Parent class for entity object for business customers and private customers
+    /// </summary>
+    
     public class Customer
     {
         public string Address { get; set; }

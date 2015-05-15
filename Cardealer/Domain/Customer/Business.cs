@@ -5,6 +5,11 @@ using System.Text;
 
 namespace Domain
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Entity object for business customer
+    /// </summary>
+    
     public class Business : Customer
     {
         public string CompanyName { get; set; }

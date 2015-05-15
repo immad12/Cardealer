@@ -7,6 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Start page for the master page, showing only text
+    /// </summary>
+    
     public partial class Start : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

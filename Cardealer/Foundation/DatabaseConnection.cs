@@ -7,10 +7,20 @@ using MySql.Data.MySqlClient;
 
 namespace Foundation
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Handling database connection
+    /// </summary>
+    
     public class DatabaseConnection
     {
-        //private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
-        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=ullerslev;";
+        // --------------------------------------------------- //
+        // -----------------                 ----------------- //
+        // ---- MAKE SURE THE connString IS SET PROPERLY ----- //
+        // -----------------                 ----------------- // 
+        // --------------------------------------------------- //
+
+        private string connString = "Server=localhost;Database=cardealer;Uid=root;Pwd=root;";
 
         protected MySqlConnection connection;       
 

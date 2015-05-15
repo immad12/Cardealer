@@ -9,7 +9,12 @@ using System.Collections.ObjectModel;
 
 namespace WebApplication
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Displaying the private customers
+    /// </summary>
+    
+    public partial class Customer : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

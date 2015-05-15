@@ -10,7 +10,12 @@ using Domain.Vehicle;
 
 namespace WebApplication
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Showing vehicles
+    /// </summary>
+    
+    public partial class Vehicle : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

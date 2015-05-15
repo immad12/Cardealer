@@ -5,6 +5,11 @@ using System.Text;
 
 namespace Domain.Vehicle
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Parent class for entity object for cars and trucks
+    /// </summary>
+    
     public class Vehicles
     {
         public string Model { get; set; }

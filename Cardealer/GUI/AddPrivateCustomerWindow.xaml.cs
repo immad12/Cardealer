@@ -16,8 +16,10 @@ using Domain;
 namespace GUI
 {
     /// <summary>
+    /// Niels & Mette, Group 2
     /// Interaction logic for AddCustomerWindow.xaml
     /// </summary>
+    
     public partial class AddPrivateCustomerWindow : Window
     {
         public AddPrivateCustomerWindow()
@@ -25,7 +27,7 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             string name = txtName.Text;
             string address = txtAddress.Text;
@@ -45,7 +47,7 @@ namespace GUI
             }
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             txtAddress.Clear();
             txtBirthday.Clear();

@@ -10,8 +10,10 @@ using System.Collections.ObjectModel;
 namespace Domain
 {
     /// <summary>
+    /// Niels & Mette, Group 2
     /// Controller logic for the cardealer
     /// </summary>
+    
     public class Cardealer
     {
         #region Singleton pattern

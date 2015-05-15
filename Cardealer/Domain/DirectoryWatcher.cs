@@ -6,6 +6,11 @@ using System.IO;
 
 namespace Domain
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// FileSystemWatcher in another thread for reading from file
+    /// </summary>
+    
     class DirectoryWatcher
     {
         static FileSystemWatcher watcher;

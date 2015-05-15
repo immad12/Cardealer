@@ -6,6 +6,11 @@ using Domain.Vehicle;
 
 namespace Domain.Contracts
 {
+    /// <summary>
+    /// Niels & Mette, Group 2
+    /// Parent class for entity object for leasing contract and sale contract
+    /// </summary>
+    
     public class Contract
     {
         public Vehicles Vehicle { get; set; }

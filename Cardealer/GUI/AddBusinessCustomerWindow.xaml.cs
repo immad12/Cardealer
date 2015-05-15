@@ -16,8 +16,10 @@ using Domain;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for AddCustomerWindow.xaml
+    /// Niels & Mette, Group 2
+    /// Interaction logic for AddCustomerWindow
     /// </summary>
+    
     public partial class AddBusinessCustomerWindow : Window
     {
         public AddBusinessCustomerWindow()
@@ -25,7 +27,7 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             txtCompanyName.Clear();
             txtSerialNo.Clear();
@@ -34,7 +36,7 @@ namespace GUI
             txtPhone.Clear();
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             string name = txtCompanyName.Text;
             string serialno = txtSerialNo.Text;
